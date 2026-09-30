@@ -3,192 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kritika Gupta | Backend & Cloud Engineer</title>
+    <title>Kritika Gupta | Software Developer</title>
 
     <style>
+        :root {
+            --bg: #020617;
+            --accent: #7b5cff;
+            --accent2: #22d3ee;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --card-bg: #0b1120;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-            color: #222;
-            transition: 0.3s;
+            font-family: system-ui, sans-serif;
+            background: radial-gradient(circle at top, #1f2937 0, #020617 40%, #000 100%);
+            color: var(--text);
+            overflow-x: hidden;
         }
 
-        /* Dark Mode */
-        body.dark {
-            background: #121212;
-            color: #eee;
+        /* STARFIELD */
+        .stars {
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1.5px 1.5px at 80% 20%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.3), transparent);
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: -1;
         }
 
+        /* NAVBAR */
         nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 20px;
-            background: #222;
-            color: white;
             position: sticky;
             top: 0;
             z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 40px;
+            background: rgba(3, 7, 18, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.3);
         }
 
-        nav a {
-            color: white;
-            margin: 0 15px;
+        .nav-left {
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent2);
+        }
+
+        .nav-links a {
+            color: var(--text);
+            margin: 0 10px;
             text-decoration: none;
-            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
         }
 
         .toggle-btn {
             cursor: pointer;
-            background: #444;
-            padding: 8px 15px;
-            border-radius: 5px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 11px;
+            text-transform: uppercase;
         }
 
+        /* HERO */
         header {
             text-align: center;
-            padding: 80px 20px;
+            padding: 80px 20px 40px;
         }
 
         header h1 {
-            font-size: 48px;
-            animation: fadeIn 1.5s ease;
+            font-size: 40px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         header p {
-            font-size: 20px;
-            animation: fadeIn 2s ease;
+            font-size: 18px;
+            color: var(--muted);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .hero-tagline {
+            margin-top: 20px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: #6b7280;
         }
 
+        /* SECTIONS */
         .section {
-            padding: 60px 20px;
-            max-width: 900px;
+            padding: 40px 20px;
+            max-width: 1000px;
             margin: auto;
         }
 
+        .section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 40%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+        }
+
+        .section p {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* GRID */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
         }
 
         .skill-box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 12px;
             text-align: center;
-            font-weight: bold;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-
-        body.dark .skill-box {
-            background: #1e1e1e;
-        }
-
-        .skill-box:hover {
-            transform: scale(1.05);
+            font-weight: 600;
+            box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.4);
         }
 
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
         .project-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
+            background: var(--card-bg);
+            padding: 18px;
+            border-radius: 14px;
+            box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.4);
         }
 
-        body.dark .project-card {
-            background: #1e1e1e;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Contact Icons */
-        .contact-icon {
-            margin-right: 10px;
-            font-size: 20px;
-        }
-
-        /* Timeline */
+        /* TIMELINE */
         .timeline {
-            border-left: 3px solid #444;
+            border-left: 2px solid rgba(148, 163, 184, 0.6);
             padding-left: 20px;
         }
 
+        /* FOOTER */
         footer {
             text-align: center;
-            padding: 40px;
-            background: #222;
-            color: white;
+            padding: 30px;
+            background: #020617;
+            color: #6b7280;
         }
 
-        footer a {
-            color: #00eaff;
-            text-decoration: none;
-        }
-
-        /* Floating Contact Widget */
+        /* FLOATING CONTACT */
         .floating-contact {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: #222;
-            color: white;
-            padding: 12px 18px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-
-        .floating-contact a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            padding: 10px 18px;
+            border-radius: 999px;
         }
     </style>
 </head>
 
 <body>
 
+    <div class="stars"></div>
+
     <nav>
-        <div>
+        <div class="nav-left">KRITIKA GUPTA</div>
+        <div class="nav-links">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
-            <a href="#backend-projects">Backend</a>
-            <a href="#certifications">Certifications</a>
+            <a href="#publication">Publication</a>
             <a href="#experience">Experience</a>
             <a href="#resume">Resume</a>
             <a href="#contact">Contact</a>
         </div>
-        <div class="toggle-btn" onclick="toggleDark()">Dark Mode</div>
+        <div class="toggle-btn" onclick="document.body.classList.toggle('dark')">Toggle Theme</div>
     </nav>
 
     <header>
         <h1>Hello, I'm Kritika Gupta</h1>
-        <p>Backend Engineer • Cloud Developer • AI Enthusiast</p>
+        <p>Software Developer • Cloud Engineer • AI Enthusiast</p>
+        <div class="hero-tagline">
+            FULL‑STACK • CLOUD • FASTAPI • DOCKER • AWS • AI
+        </div>
     </header>
 
     <!-- ABOUT -->
     <div class="section" id="about">
         <h2>About Me</h2>
         <p>
-            I am a backend and cloud engineer passionate about building scalable systems, automation, 
-            and modern web applications. I work with Python, FastAPI, Docker, AWS, and cloud-native tools.
-            I love solving real-world problems using clean architecture and efficient backend design.
+            I’m a software developer who blends full‑stack development, cloud engineering, and AI‑powered tools 
+            to build modern, efficient, and thoughtfully engineered systems. Whether I’m creating intuitive user 
+            interfaces, designing robust APIs, containerizing applications, or automating workflows across cloud 
+            environments, I focus on clean architecture, scalability, and real‑world impact.
+        </p>
+        <p>
+            I enjoy taking complex technical challenges and turning them into reliable, high‑performance solutions. 
+            My work spans cloud platforms like AWS, Azure, and GCP, modern frameworks like FastAPI, and automation 
+            practices that make development smoother and smarter. I’m constantly exploring new technologies, 
+            experimenting with AI‑driven tooling, and improving the way systems are built, deployed, and maintained.
+        </p>
+        <p>
+            Beyond development, I also contribute to research — applying machine learning to high‑reliability 
+            engineering systems and exploring how AI can enhance predictive maintenance and industrial operations.
         </p>
     </div>
 
@@ -200,10 +248,12 @@
             <div class="skill-box">FastAPI</div>
             <div class="skill-box">Docker</div>
             <div class="skill-box">AWS</div>
-            <div class="skill-box">Git & GitHub</div>
+            <div class="skill-box">Azure</div>
+            <div class="skill-box">Google Cloud</div>
             <div class="skill-box">SQL</div>
+            <div class="skill-box">Git & GitHub</div>
             <div class="skill-box">HTML & CSS</div>
-            <div class="skill-box">Cloud Architecture</div>
+            <div class="skill-box">CI/CD Basics</div>
         </div>
     </div>
 
@@ -211,100 +261,69 @@
     <div class="section" id="projects">
         <h2>Projects</h2>
         <div class="projects">
-
             <div class="project-card">
                 <h3>URL Shortener (FastAPI)</h3>
-                <p>A production-ready URL shortener built using FastAPI, Docker, and PostgreSQL.</p>
+                <p>Production-ready FastAPI service with Docker, PostgreSQL, and analytics.</p>
             </div>
-
             <div class="project-card">
                 <h3>Cloud Offloading Model</h3>
-                <p>Mathematical modeling + Python visualization for execution time T(p, θ) in cloud systems.</p>
+                <p>Python visualization + modeling for execution time T(p, θ) in cloud systems.</p>
             </div>
-
             <div class="project-card">
                 <h3>Portfolio Website</h3>
-                <p>Your current live GitHub Pages portfolio — fully redesigned.</p>
+                <p>Fully custom GitHub Pages portfolio with galaxy theme and animations.</p>
             </div>
-
         </div>
     </div>
 
-    <!-- BACKEND PROJECTS -->
-    <div class="section" id="backend-projects">
-        <h2>Backend Engineering Projects</h2>
+    <!-- PUBLICATION -->
+    <div class="section" id="publication">
+        <h2>Publication</h2>
+        <p>
+            I am a co-author of a peer-reviewed research paper published in IEEE, titled 
+            <strong>"Regime-Aware Deep Learning Framework for Predictive Maintenance in Industrial Systems"</strong>. 
+            This work focuses on Remaining Useful Life (RUL) prediction using NASA’s CMAPSS turbofan engine dataset, 
+            where we developed a regime-aware deep learning approach to improve predictive accuracy across varying 
+            operational conditions.
+        </p>
 
-        <div class="projects">
+        <p>
+            🔗 <strong>IEEE Xplore:</strong><br>
+            <a href="https://ieeexplore.ieee.org/document/11607667" target="_blank" style="color: var(--accent2);">
+                https://ieeexplore.ieee.org/document/11607667
+            </a>
+        </p>
 
-            <div class="project-card">
-                <h3>Authentication API (FastAPI)</h3>
-                <p>JWT-based authentication system with role-based access control.</p>
-            </div>
+        <p>
+            📄 <strong>DOI:</strong><br>
+            <a href="https://doi.org/10.1109/MLISE70044.2026.11607667" target="_blank" style="color: var(--accent2);">
+                10.1109/MLISE70044.2026.11607667
+            </a>
+        </p>
 
-            <div class="project-card">
-                <h3>Dockerized Microservice</h3>
-                <p>Containerized Python service deployed on AWS EC2 with CI/CD.</p>
-            </div>
-
-            <div class="project-card">
-                <h3>Cloud Monitoring Script</h3>
-                <p>Python automation tool to track CPU, memory, and network usage.</p>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- CERTIFICATIONS -->
-    <div class="section" id="certifications">
-        <h2>Certifications</h2>
-
-        <ul style="font-size: 18px; line-height: 1.8;">
-            <li><strong>Microsoft Azure Fundamentals (AZ-900)</strong></li>
-            <li><strong>Google Cloud – Introduction to Generative AI</strong></li>
-            <li><strong>AWS Cloud Practitioner (In Progress)</strong></li>
-            <li><strong>Docker Essentials</strong></li>
-        </ul>
+        <p>
+            🔗 <strong>LinkedIn Announcement:</strong><br>
+            <a href="https://lnkd.in/g5X_y9yY" target="_blank" style="color: var(--accent2);">
+                https://lnkd.in/g5X_y9yY
+            </a>
+        </p>
     </div>
 
     <!-- EXPERIENCE -->
     <div class="section" id="experience">
         <h2>Experience</h2>
-
         <div class="timeline">
-
-            <p>
-                <strong>Data Science Fellow / AI Data Analyst – ChiEAC</strong><br>
-                <em>2026</em><br>
-                Worked on AI-driven data analysis, cloud automation, and backend tooling.
-            </p>
-
-            <p>
-                <strong>Software Engineering Intern – ThinkNext Technologies</strong><br>
-                <em>2025</em><br>
-                Built backend APIs, automated workflows, and contributed to cloud deployments.
-            </p>
-
-            <p>
-                <strong>Hotel Receptionist – Marshall, MI</strong><br>
-                <em>2024–2026</em><br>
-                Customer-facing role handling payments, accounts, and operational systems.
-            </p>
-
-            <p>
-                <strong>Retail Assistant</strong><br>
-                <em>Part-time</em><br>
-                Managed inventory, POS systems, and customer interactions.
-            </p>
-
+            <p><strong>Data Science Fellow – ChiEAC</strong><br>AI-driven analysis, cloud automation, backend tooling.</p>
+            <p><strong>Software Engineering Intern – ThinkNext</strong><br>Backend APIs, cloud deployments, automation.</p>
+            <p><strong>Hotel Receptionist – Marshall, MI</strong><br>Customer-facing operations, payments, systems.</p>
+            <p><strong>Retail Assistant</strong><br>Inventory, POS systems, customer interaction.</p>
         </div>
     </div>
 
     <!-- RESUME -->
     <div class="section" id="resume">
         <h2>Resume</h2>
-        <a href="resume.pdf" download 
-           style="padding: 12px 20px; background:#222; color:white; 
-                  border-radius:8px; text-decoration:none; font-weight:bold;">
+        <a href="resume.pdf" download style="padding:12px 22px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:white; border-radius:999px; text-decoration:none;">
             Download My Resume
         </a>
     </div>
@@ -312,52 +331,18 @@
     <!-- CONTACT -->
     <div class="section" id="contact">
         <h2>Contact</h2>
-
-        <p>
-            <span class="contact-icon">📧</span>
-            <a href="mailto:work.kritikagupta13@gmail.com">
-                work.kritikagupta13@gmail.com
-            </a>
-        </p>
-
-        <p>
-            <span class="contact-icon">💻</span>
-            <a href="https://github.com/KritikaGupta15" target="_blank">
-                github.com/KritikaGupta15
-            </a>
-        </p>
-
-        <p>
-            <span class="contact-icon">🔗</span>
-            <a href="https://www.linkedin.com/in/kritika-gupta-73335a276/" target="_blank">
-                linkedin.com/in/kritika-gupta-73335a276
-            </a>
-        </p>
+        <p>📧 <a href="mailto:work.kritikagupta13@gmail.com" style="color:var(--accent2);">work.kritikagupta13@gmail.com</a></p>
+        <p>💻 <a href="https://github.com/KritikaGupta15" target="_blank" style="color:var(--accent2);">github.com/KritikaGupta15</a></p>
+        <p>🔗 <a href="https://www.linkedin.com/in/kritika-gupta-73335a276/" target="_blank" style="color:var(--accent2);">LinkedIn Profile</a></p>
     </div>
 
     <footer>
-        © 2026 Kritika Gupta — Backend & Cloud Engineer
+        © 2026 Kritika Gupta — Software Developer • Cloud Engineer • AI Enthusiast
     </footer>
 
-    <!-- Floating Contact Widget -->
     <div class="floating-contact">
-        <a href="mailto:work.kritikagupta13@gmail.com">Email Me</a>
+        <a href="mailto:work.kritikagupta13@gmail.com" style="color:white; text-decoration:none;">Email Me</a>
     </div>
-
-    <script>
-        function toggleDark() {
-            document.body.classList.toggle('dark');
-        }
-
-        /* Smooth Scroll */
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.onclick = function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href'))
-                        .scrollIntoView({ behavior: 'smooth' });
-            };
-        });
-    </script>
 
 </body>
 </html>
