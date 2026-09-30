@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kritika Gupta | Software Developer & Cloud Engineer</title>
+    <title>Kritika Gupta | Backend & Cloud Engineer</title>
 
     <style>
         body {
@@ -28,6 +28,7 @@
             color: white;
             position: sticky;
             top: 0;
+            z-index: 100;
         }
 
         nav a {
@@ -116,6 +117,18 @@
             transform: translateY(-5px);
         }
 
+        /* Contact Icons */
+        .contact-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        /* Timeline */
+        .timeline {
+            border-left: 3px solid #444;
+            padding-left: 20px;
+        }
+
         footer {
             text-align: center;
             padding: 40px;
@@ -127,6 +140,24 @@
             color: #00eaff;
             text-decoration: none;
         }
+
+        /* Floating Contact Widget */
+        .floating-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #222;
+            color: white;
+            padding: 12px 18px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+
+        .floating-contact a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -137,6 +168,10 @@
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
+            <a href="#backend-projects">Backend</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#experience">Experience</a>
+            <a href="#resume">Resume</a>
             <a href="#contact">Contact</a>
         </div>
         <div class="toggle-btn" onclick="toggleDark()">Dark Mode</div>
@@ -144,9 +179,10 @@
 
     <header>
         <h1>Hello, I'm Kritika Gupta</h1>
-        <p>Software Developer • Cloud Engineer • AI Enthusiast</p>
+        <p>Backend Engineer • Cloud Developer • AI Enthusiast</p>
     </header>
 
+    <!-- ABOUT -->
     <div class="section" id="about">
         <h2>About Me</h2>
         <p>
@@ -156,6 +192,7 @@
         </p>
     </div>
 
+    <!-- SKILLS -->
     <div class="section" id="skills">
         <h2>Skills</h2>
         <div class="skills-grid">
@@ -170,6 +207,7 @@
         </div>
     </div>
 
+    <!-- PROJECTS -->
     <div class="section" id="projects">
         <h2>Projects</h2>
         <div class="projects">
@@ -177,55 +215,148 @@
             <div class="project-card">
                 <h3>URL Shortener (FastAPI)</h3>
                 <p>A production-ready URL shortener built using FastAPI, Docker, and PostgreSQL.</p>
-                <a href="#" target="_blank">View Project</a>
             </div>
 
             <div class="project-card">
                 <h3>Cloud Offloading Model</h3>
                 <p>Mathematical modeling + Python visualization for execution time T(p, θ) in cloud systems.</p>
-                <a href="#" target="_blank">View Project</a>
             </div>
 
             <div class="project-card">
                 <h3>Portfolio Website</h3>
                 <p>Your current live GitHub Pages portfolio — fully redesigned.</p>
-                <a href="#" target="_blank">View Project</a>
             </div>
 
         </div>
     </div>
 
+    <!-- BACKEND PROJECTS -->
+    <div class="section" id="backend-projects">
+        <h2>Backend Engineering Projects</h2>
+
+        <div class="projects">
+
+            <div class="project-card">
+                <h3>Authentication API (FastAPI)</h3>
+                <p>JWT-based authentication system with role-based access control.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Dockerized Microservice</h3>
+                <p>Containerized Python service deployed on AWS EC2 with CI/CD.</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Cloud Monitoring Script</h3>
+                <p>Python automation tool to track CPU, memory, and network usage.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div class="section" id="certifications">
+        <h2>Certifications</h2>
+
+        <ul style="font-size: 18px; line-height: 1.8;">
+            <li><strong>Microsoft Azure Fundamentals (AZ-900)</strong></li>
+            <li><strong>Google Cloud – Introduction to Generative AI</strong></li>
+            <li><strong>AWS Cloud Practitioner (In Progress)</strong></li>
+            <li><strong>Docker Essentials</strong></li>
+        </ul>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section" id="experience">
+        <h2>Experience</h2>
+
+        <div class="timeline">
+
+            <p>
+                <strong>Data Science Fellow / AI Data Analyst – ChiEAC</strong><br>
+                <em>2026</em><br>
+                Worked on AI-driven data analysis, cloud automation, and backend tooling.
+            </p>
+
+            <p>
+                <strong>Software Engineering Intern – ThinkNext Technologies</strong><br>
+                <em>2025</em><br>
+                Built backend APIs, automated workflows, and contributed to cloud deployments.
+            </p>
+
+            <p>
+                <strong>Hotel Receptionist – Marshall, MI</strong><br>
+                <em>2024–2026</em><br>
+                Customer-facing role handling payments, accounts, and operational systems.
+            </p>
+
+            <p>
+                <strong>Retail Assistant</strong><br>
+                <em>Part-time</em><br>
+                Managed inventory, POS systems, and customer interactions.
+            </p>
+
+        </div>
+    </div>
+
+    <!-- RESUME -->
+    <div class="section" id="resume">
+        <h2>Resume</h2>
+        <a href="resume.pdf" download 
+           style="padding: 12px 20px; background:#222; color:white; 
+                  border-radius:8px; text-decoration:none; font-weight:bold;">
+            Download My Resume
+        </a>
+    </div>
+
+    <!-- CONTACT -->
     <div class="section" id="contact">
-    <h2>Contact</h2>
+        <h2>Contact</h2>
 
-    <p>Email: 
-        <a href="mailto:work.kritikagupta13@gmail.com">
-            work.kritikagupta13@gmail.com
-        </a>
-    </p>
+        <p>
+            <span class="contact-icon">📧</span>
+            <a href="mailto:work.kritikagupta13@gmail.com">
+                work.kritikagupta13@gmail.com
+            </a>
+        </p>
 
-    <p>GitHub: 
-        <a href="https://github.com/KritikaGupta15/" target="_blank">
-            github.com/KritikaGupta15
-        </a>
-    </p>
+        <p>
+            <span class="contact-icon">💻</span>
+            <a href="https://github.com/KritikaGupta15" target="_blank">
+                github.com/KritikaGupta15
+            </a>
+        </p>
 
-    <p>LinkedIn: 
-        <a href="https://www.linkedin.com/in/kritika-gupta-73335a276/" target="_blank">
-            linkedin.com/in/kritika-gupta-73335a276
-        </a>
-    </p>
-</div>
-
+        <p>
+            <span class="contact-icon">🔗</span>
+            <a href="https://www.linkedin.com/in/kritika-gupta-73335a276/" target="_blank">
+                linkedin.com/in/kritika-gupta-73335a276
+            </a>
+        </p>
+    </div>
 
     <footer>
         © 2026 Kritika Gupta — Backend & Cloud Engineer
     </footer>
 
+    <!-- Floating Contact Widget -->
+    <div class="floating-contact">
+        <a href="mailto:work.kritikagupta13@gmail.com">Email Me</a>
+    </div>
+
     <script>
         function toggleDark() {
             document.body.classList.toggle('dark');
         }
+
+        /* Smooth Scroll */
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.onclick = function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))
+                        .scrollIntoView({ behavior: 'smooth' });
+            };
+        });
     </script>
 
 </body>
