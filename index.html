@@ -28,7 +28,6 @@
             overflow-x: hidden;
         }
 
-        /* STARFIELD */
         .stars {
             position: fixed;
             inset: 0;
@@ -42,7 +41,6 @@
             z-index: -1;
         }
 
-        /* NAVBAR */
         nav {
             position: sticky;
             top: 0;
@@ -83,7 +81,6 @@
             text-transform: uppercase;
         }
 
-        /* HERO */
         header {
             text-align: center;
             padding: 80px 20px 40px;
@@ -101,6 +98,18 @@
             color: var(--muted);
         }
 
+        .ieee-badge {
+            background: linear-gradient(135deg, #7b5cff, #22d3ee);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            margin-top: 10px;
+            display: inline-block;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
         .hero-tagline {
             margin-top: 20px;
             font-size: 13px;
@@ -109,7 +118,6 @@
             color: #6b7280;
         }
 
-        /* SECTIONS */
         .section {
             padding: 40px 20px;
             max-width: 1000px;
@@ -138,7 +146,6 @@
             font-size: 15px;
         }
 
-        /* GRID */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -167,13 +174,18 @@
             box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.4);
         }
 
-        /* TIMELINE */
+        .project-img {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 12px;
+            box-shadow: 0 0 0 1px rgba(148,163,184,0.4);
+        }
+
         .timeline {
             border-left: 2px solid rgba(148, 163, 184, 0.6);
             padding-left: 20px;
         }
 
-        /* FOOTER */
         footer {
             text-align: center;
             padding: 30px;
@@ -181,7 +193,6 @@
             color: #6b7280;
         }
 
-        /* FLOATING CONTACT */
         .floating-contact {
             position: fixed;
             bottom: 20px;
@@ -214,6 +225,9 @@
     <header>
         <h1>Hello, I'm Kritika Gupta</h1>
         <p>Software Developer • Cloud Engineer • AI Enthusiast</p>
+
+        <span class="ieee-badge">Published in IEEE</span>
+
         <div class="hero-tagline">
             FULL‑STACK • CLOUD • FASTAPI • DOCKER • AWS • AI
         </div>
@@ -245,15 +259,19 @@
         <h2>Skills</h2>
         <div class="skills-grid">
             <div class="skill-box">Python</div>
+            <div class="skill-box">Java</div>
+            <div class="skill-box">C++</div>
             <div class="skill-box">FastAPI</div>
+            <div class="skill-box">Django</div>
+            <div class="skill-box">Flask</div>
             <div class="skill-box">Docker</div>
             <div class="skill-box">AWS</div>
-            <div class="skill-box">Azure</div>
-            <div class="skill-box">Google Cloud</div>
-            <div class="skill-box">SQL</div>
-            <div class="skill-box">Git & GitHub</div>
-            <div class="skill-box">HTML & CSS</div>
-            <div class="skill-box">CI/CD Basics</div>
+            <div class="skill-box">OCI</div>
+            <div class="skill-box">PostgreSQL</div>
+            <div class="skill-box">MySQL</div>
+            <div class="skill-box">Oracle</div>
+            <div class="skill-box">RAG</div>
+            <div class="skill-box">LLM Fine‑Tuning</div>
         </div>
     </div>
 
@@ -261,18 +279,25 @@
     <div class="section" id="projects">
         <h2>Projects</h2>
         <div class="projects">
+
             <div class="project-card">
-                <h3>URL Shortener (FastAPI)</h3>
-                <p>Production-ready FastAPI service with Docker, PostgreSQL, and analytics.</p>
+                <h3>Cloud-Based URL Shortener</h3>
+                <p>Full-stack AWS application with Flask/FastAPI backend and DynamoDB.</p>
+                <img src="images/url_shortener.png" class="project-img">
             </div>
+
             <div class="project-card">
-                <h3>Cloud Offloading Model</h3>
-                <p>Python visualization + modeling for execution time T(p, θ) in cloud systems.</p>
+                <h3>Agentic AI Smart City Assistant</h3>
+                <p>DeepSeek fine-tuning, RAG, vector retrieval, and multi-agent orchestration.</p>
+                <img src="images/smart_city_ai.png" class="project-img">
             </div>
+
             <div class="project-card">
-                <h3>Portfolio Website</h3>
-                <p>Fully custom GitHub Pages portfolio with galaxy theme and animations.</p>
+                <h3>ETL Pipeline Development</h3>
+                <p>Extract, clean, transform, and load structured datasets for analysis.</p>
+                <img src="images/etl_pipeline.png" class="project-img">
             </div>
+
         </div>
     </div>
 
@@ -311,43 +336,42 @@
 
     <!-- EXPERIENCE -->
     <div class="section" id="experience">
-    <h2>Experience</h2>
-    <div class="timeline">
+        <h2>Experience</h2>
+        <div class="timeline">
 
-        <p>
-            <strong>Data Science Fellow / AI Data Analyst - Chicago Education Advocacy Cooperative (ChiEAC)</strong><br>
-            <em>Jul 2026 – Present</em><br>
-            Designing scalable machine learning systems that transform organizational data into predictive, interpretable insights. 
-            Building Generative AI capabilities including LLM fine‑tuning, multi‑agent orchestration, and structured tool/function calling 
-            to automate workflows and improve operational efficiency. Contributing to applied AI research and production‑grade ML pipelines.
-        </p>
+            <p>
+                <strong>Data Science Fellow / AI Data Analyst — Chicago Education Advocacy Cooperative (ChiEAC)</strong><br>
+                <em>Jul 2026 – Present</em><br>
+                Designing scalable machine learning systems that transform organizational data into predictive, interpretable insights. 
+                Building Generative AI capabilities including LLM fine‑tuning, multi‑agent orchestration, and structured tool/function calling 
+                to automate workflows and improve operational efficiency. Contributing to applied AI research and production‑grade ML pipelines.
+            </p>
 
-        <p>
-            <strong>Software Engineering Intern - ThinkNext Technologies</strong><br>
-            <em>Jun 2022 – Jul 2022</em><br>
-            Developed backend services for a production inventory management system using Python and Django. 
-            Optimized database interactions across MySQL and Oracle to improve performance and reliability. 
-            Collaborated with frontend developers, participated in code reviews, and ensured maintainable, well‑documented code.
-        </p>
+            <p>
+                <strong>Software Engineering Intern — ThinkNext Technologies</strong><br>
+                <em>Jun 2022 – Jul 2022</em><br>
+                Developed backend services for a production inventory management system using Python and Django. 
+                Optimized database interactions across MySQL and Oracle to improve performance and reliability. 
+                Collaborated with frontend developers, participated in code reviews, and ensured maintainable, well‑documented code.
+            </p>
 
-        <p>
-            <strong>Python Programming Intern - GTB Institute</strong><br>
-            <em>Jul 2021 – Sep 2021</em><br>
-            Performed data analysis and visualization using Pandas and NumPy. 
-            Led a team of three to design and deliver a complete airline management system end‑to‑end, earning formal recognition for leadership, 
-            project ownership, and technical execution.
-        </p>
+            <p>
+                <strong>Python Programming Intern — GTB Institute</strong><br>
+                <em>Jul 2021 – Sep 2021</em><br>
+                Performed data analysis and visualization using Pandas and NumPy. 
+                Led a team of three to design and deliver a complete airline management system end‑to‑end, earning formal recognition for leadership, 
+                project ownership, and technical execution.
+            </p>
 
-        <p>
-            <strong>Team Member - CMU Dining Services</strong><br>
-            <em>Oct 2025 – May 2026</em><br>
-            Delivered efficient customer service in a fast‑paced environment, collaborating with a diverse team and maintaining smooth daily operations. 
-            Strengthened communication, teamwork, and responsibility - skills that translate directly into professional engineering environments.
-        </p>
+            <p>
+                <strong>Team Member — CMU Dining Services</strong><br>
+                <em>Oct 2025 – May 2026</em><br>
+                Delivered efficient customer service in a fast‑paced environment, collaborating with a diverse team and maintaining smooth daily operations. 
+                Strengthened communication, teamwork, and responsibility — skills that translate directly into professional engineering environments.
+            </p>
 
+        </div>
     </div>
-</div>
-
 
     <!-- RESUME -->
     <div class="section" id="resume">
@@ -358,44 +382,43 @@
     </div>
 
     <!-- CONTACT -->
-   <div class="section" id="contact">
-    <h2>Contact</h2>
+    <div class="section" id="contact">
+        <h2>Contact</h2>
 
-    <p>
-        📧 <strong>Email:</strong><br>
-        <a href="mailto:work.kritikagupta13@gmail.com" style="color: var(--accent2); font-size: 16px;">
-            work.kritikagupta13@gmail.com
-        </a>
-    </p>
+        <p>
+            📧 <strong>Email:</strong><br>
+            <a href="mailto:work.kritikagupta13@gmail.com" style="color: var(--accent2); font-size: 16px;">
+                work.kritikagupta13@gmail.com
+            </a>
+        </p>
 
-    <p>
-        📍 <strong>Location:</strong><br>
-        Mount Pleasant, MI (Open to Remote)
-    </p>
+        <p>
+            📍 <strong>Location:</strong><br>
+            Mount Pleasant, MI (Open to Remote)
+        </p>
 
-    <p>
-        📱 <strong>Phone:</strong><br>
-        <a href="tel:+19894922936" style="color: var(--accent2); font-size: 16px;">
-            (989) 492‑2936
-        </a>
-    </p>
+        <p>
+            📱 <strong>Phone:</strong><br>
+            <a href="tel:+19894922936" style="color: var(--accent2); font-size: 16px;">
+                (989) 492‑2936
+            </a>
+        </p>
 
-    <p>
-        💻 <strong>GitHub:</strong><br>
-        <a href="https://github.com/KritikaGupta15" target="_blank" style="color: var(--accent2); font-size: 16px;">
-            github.com/KritikaGupta15
-        </a>
-    </p>
+        <p>
+            💻 <strong>GitHub:</strong><br>
+            <a href="https://github.com/KritikaGupta15" target="_blank" style="color: var(--accent2); font-size: 16px;">
+                github.com/KritikaGupta15
+            </a>
+        </p>
 
-    <p>
-        🔗 <strong>LinkedIn:</strong><br>
-        <a href="https://www.linkedin.com/in/kritika-gupta-73335a276/" target="_blank" style="color: var(--accent2); font-size: 16px;">
-            linkedin.com/in/kritika-gupta-73335a276
-        </a>
-    </p>
+        <p>
+            🔗 <strong>LinkedIn:</strong><br>
+            <a href="https://www.linkedin.com/in/kritika-gupta-73335a276/" target="_blank" style="color: var(--accent2); font-size: 16px;">
+                linkedin.com/in/kritika-gupta-73335a276
+            </a>
+        </p>
 
-</div>
-
+    </div>
 
     <footer>
         © 2026 Kritika Gupta — Software Developer • Cloud Engineer • AI Enthusiast
