@@ -283,6 +283,7 @@
         }
 
         /* CERTIFICATION ICONS */
+        
         .cert-icon {
             width: 22px;
             height: 22px;
@@ -290,6 +291,13 @@
             vertical-align: middle;
             filter: brightness(1.4);
         }
+        
+        /* Light mode icon dimming */
+        body.light .tag-icon,
+        body.light .cert-icon {
+            filter: brightness(0.7);
+        }
+
 
         .timeline {
             border-left: 2px solid rgba(148, 163, 184, 0.6);
@@ -311,6 +319,57 @@
             padding: 10px 18px;
             border-radius: 999px;
         }
+
+            /* Smooth theme transition */
+body, nav, .section, .project-card, .skill-box {
+    transition: background 0.45s ease, 
+                color 0.45s ease, 
+                box-shadow 0.45s ease,
+                border-color 0.45s ease;
+}
+
+/* Light Mode */
+body.light {
+    background: radial-gradient(circle at top, #f3f4f6 0, #e5e7eb 40%, #d1d5db 100%);
+    color: #111827;
+}
+
+body.light nav {
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+body.light .section {
+    color: #1f2937;
+}
+
+body.light .project-card,
+body.light .skill-box {
+    background: #ffffff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+}
+
+body.light .project-card::before,
+body.light .skill-box::before {
+    background: linear-gradient(135deg, #7b5cff, #22d3ee);
+}
+
+body.light .project-tags span {
+    background: rgba(0,0,0,0.05);
+    color: #1f2937;
+    border-color: rgba(0,0,0,0.1);
+}
+
+body.light .project-btn,
+body.light .cert-btn {
+    background: linear-gradient(135deg, #7b5cff, #22d3ee);
+    color: white;
+}
+
+body.light .nav-left {
+    color: #7b5cff;
+}
+
     </style>
 </head>
 
@@ -330,7 +389,14 @@
             <a href="#resume">Resume</a>
             <a href="#contact">Contact</a>
         </div>
-        <div class="toggle-btn" onclick="document.body.classList.toggle('dark')">Toggle Theme</div>
+        <div class="toggle-btn" onclick="toggleTheme()">Toggle Theme</div>
+
+<script>
+function toggleTheme() {
+    document.body.classList.toggle("light");
+}
+</script>
+
     </nav>
 
     <header>
@@ -525,44 +591,49 @@
 
     <!-- CERTIFICATIONS -->
     <div class="section" id="certifications">
-        <h2>Certifications</h2>
+    <h2>Certifications</h2>
 
-        <div class="skills-grid">
+    <div class="skills-grid">
 
-            <div class="skill-box">
-                <img class="cert-icon" src="icons/python.svg">
-                Hugging Face Agentic AI Certification
-                <a class="cert-btn" href="https://huggingface.co/datasets/agents-course/certificates/resolve/main/certificates/Kritika13/2026-01-31.png" target="_blank">
-                    View Certificate
-                </a>
-            </div>
-
-            <div class="skill-box">
-                <img class="cert-icon" src="icons/nvidia.svg">
-                NVIDIA Deep Learning Workshop Certification
-                <a class="cert-btn" href="https://learn.nvidia.com/certificates?id" target="_blank">
-                    View Certificate
-                </a>
-            </div>
-
-            <div class="skill-box">
-                <img class="cert-icon" src="icons/aws.svg">
-                AWS Cloud Practitioner (Simplilearn)
-                <a class="cert-btn" href="https://simpli-web.app.link/e/d7mbDRsaD6b" target="_blank">
-                    View Certificate
-                </a>
-            </div>
-
-            <div class="skill-box">
-                <img class="cert-icon" src="icons/aws.svg">
-                AWS Cloud Foundations (Simplilearn)
-                <a class="cert-btn" href="https://simpli-web.app.link/e/ZXbu7ohuO6b" target="_blank">
-                    View Certificate
-                </a>
-            </div>
-
+        <div class="skill-box">
+            <strong>Introduction to Generative AI</strong><br>
+            Google Cloud Skills Boost  
+            <p style="color: var(--muted); font-size: 13px; margin-top: 6px;">
+                Learned core Generative AI concepts including LLMs, embeddings, transformer architecture, 
+                responsible AI, and real-world GenAI applications.
+            </p>
         </div>
+
+        <div class="skill-box">
+            <strong>Azure Fundamentals (AZ-900)</strong><br>
+            Microsoft Certified  
+            <p style="color: var(--muted); font-size: 13px; margin-top: 6px;">
+                Gained foundational knowledge of cloud computing, Azure services, identity & access management, 
+                security, pricing, and cloud governance.
+            </p>
+        </div>
+
+        <div class="skill-box">
+            <strong>Fundamentals of Deep Learning</strong><br>
+            NVIDIA Deep Learning Institute  
+            <p style="color: var(--muted); font-size: 13px; margin-top: 6px;">
+                Hands-on training with neural networks, CNNs, optimization techniques, GPU acceleration, 
+                and building deep learning models for real-world tasks.
+            </p>
+        </div>
+
+        <div class="skill-box">
+            <strong>AI Agents Fundamentals</strong><br>
+            Hugging Face  
+            <p style="color: var(--muted); font-size: 13px; margin-top: 6px;">
+                Learned how to build agentic AI systems using tool calling, multi-agent workflows, RAG pipelines, 
+                and practical agent-based automation.
+            </p>
+        </div>
+
     </div>
+</div>
+
 
     <!-- RESUME -->
     <div class="section" id="resume">
