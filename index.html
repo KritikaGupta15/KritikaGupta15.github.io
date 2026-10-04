@@ -146,12 +146,14 @@
             font-size: 15px;
         }
 
+        /* SKILLS GRID */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 16px;
         }
 
+        /* SKILL BOX + GLOW */
         .skill-box {
             background: var(--card-bg);
             padding: 16px;
@@ -159,6 +161,34 @@
             text-align: center;
             font-weight: 600;
             box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.4);
+            position: relative;
+            transition: 0.35s ease;
+            overflow: hidden;
+        }
+
+        .skill-box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .skill-box:hover::before {
+            opacity: 1;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 18px rgba(34, 211, 238, 0.25);
         }
 
         /* PROJECTS GRID */
@@ -186,8 +216,8 @@
             border-radius: inherit;
             padding: 2px;
             background: linear-gradient(135deg, var(--accent), var(--accent2));
-            -webkit-mask: 
-                linear-gradient(#fff 0 0) content-box, 
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
                 linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
                     mask-composite: exclude;
@@ -231,7 +261,8 @@
         }
 
         /* BUTTON */
-        .project-btn {
+        .project-btn,
+        .cert-btn {
             display: inline-block;
             margin-top: 12px;
             padding: 10px 18px;
@@ -245,9 +276,19 @@
             transition: 0.25s ease;
         }
 
-        .project-btn:hover {
+        .project-btn:hover,
+        .cert-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(34, 211, 238, 0.35);
+        }
+
+        /* CERTIFICATION ICONS */
+        .cert-icon {
+            width: 22px;
+            height: 22px;
+            margin-right: 8px;
+            vertical-align: middle;
+            filter: brightness(1.4);
         }
 
         .timeline {
@@ -285,6 +326,7 @@
             <a href="#projects">Projects</a>
             <a href="#publication">Publication</a>
             <a href="#experience">Experience</a>
+            <a href="#certifications">Certifications</a>
             <a href="#resume">Resume</a>
             <a href="#contact">Contact</a>
         </div>
@@ -339,7 +381,7 @@
         </div>
     </div>
 
-    <!-- ⭐ PROJECTS -->
+    <!-- PROJECTS -->
     <div class="section" id="projects">
         <h2>Projects</h2>
         <div class="projects">
@@ -423,12 +465,36 @@
     <!-- PUBLICATION -->
     <div class="section" id="publication">
         <h2>Publication</h2>
+
         <p>
-            I am a co-author of a peer-reviewed research paper published in IEEE.
+            I am a co-author of a peer‑reviewed research paper published in IEEE titled 
+            <strong>"Regime-Aware Deep Learning Framework for Predictive Maintenance in Industrial Systems"</strong>.
+            This work focuses on Remaining Useful Life (RUL) prediction using NASA’s CMAPSS turbofan engine dataset.
         </p>
+
         <p>
-            🔗 <a href="https://ieeexplore.ieee.org/document/11607667" target="_blank" style="color: var(--accent2);">
-                IEEE Xplore Link
+            We developed a regime‑aware deep learning approach that improves predictive accuracy across varying
+            operational conditions by combining clustering-based regime identification with an LSTM + Attention model.
+        </p>
+
+        <p>
+            🔗 <strong>IEEE Xplore:</strong><br>
+            <a href="https://ieeexplore.ieee.org/document/11607667" target="_blank" style="color: var(--accent2);">
+                https://ieeexplore.ieee.org/document/11607667
+            </a>
+        </p>
+
+        <p>
+            📄 <strong>DOI:</strong><br>
+            <a href="https://doi.org/10.1109/MLISE70044.2026.11607667" target="_blank" style="color: var(--accent2);">
+                10.1109/MLISE70044.2026.11607667
+            </a>
+        </p>
+
+        <p>
+            🔗 <strong>LinkedIn Announcement:</strong><br>
+            <a href="https://lnkd.in/g5X_y9yY" target="_blank" style="color: var(--accent2);">
+                https://lnkd.in/g5X_y9yY
             </a>
         </p>
     </div>
@@ -436,68 +502,8 @@
     <!-- EXPERIENCE -->
     <div class="section" id="experience">
         <h2>Experience</h2>
+
         <div class="timeline">
-            <p><strong>Data Science Fellow — ChiEAC</strong></p>
-            <p><strong>Software Engineering Intern — ThinkNext</strong></p>
-            <p><strong>Python Intern — GTB Institute</strong></p>
-            <p><strong>Team Member — CMU Dining Services</strong></p>
-        </div>
-    </div>
 
-    <!-- RESUME -->
-    <div class="section" id="resume">
-        <h2>Resume</h2>
-        <a href="resume.pdf" download style="padding:12px 22px; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:white; border-radius:999px; text-decoration:none;">
-            Download My Resume
-        </a>
-    </div>
-
-    <!-- CONTACT -->
-    <div class="section" id="contact">
-        <h2>Contact</h2>
-
-        <p>
-            📧 <strong>Email:</strong><br>
-            <a href="mailto:work.kritikagupta13@gmail.com" style="color: var(--accent2); font-size: 16px;">
-                work.kritikagupta13@gmail.com
-            </a>
-        </p>
-
-        <p>
-            📍 <strong>Location:</strong><br>
-            Mount Pleasant, MI (Open to Remote)
-        </p>
-
-        <p>
-            📱 <strong>Phone:</strong><br>
-            <a href="tel:+19894922936" style="color: var(--accent2); font-size: 16px;">
-                (989) 492‑2936
-            </a>
-        </p>
-
-        <p>
-            💻 <strong>GitHub:</strong><br>
-            <a href="https://github.com/KritikaGupta15" target="_blank" style="color: var(--accent2); font-size: 16px;">
-                github.com/KritikaGupta15
-            </a>
-        </p>
-
-        <p>
-            🔗 <strong>LinkedIn:</strong><br>
-            <a href="https://www.linkedin.com/in/kritika-gupta-73335a276/" target="_blank" style="color: var(--accent2); font-size: 16px;">
-                linkedin.com/in/kritika-gupta-73335a276
-            </a>
-        </p>
-
-    </div>
-
-    <footer>
-        © 2026 Kritika Gupta — Software Developer • Cloud Engineer • AI Enthusiast
-    </footer>
-
-    <div class="floating-contact">
-        <a href="mailto:work.kritikagupta13@gmail.com" style="color:white; text-decoration:none;">Email Me</a>
-    </div>
-
-</body>
-</html>
+            <p>
+                <
