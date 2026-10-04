@@ -161,24 +161,93 @@
             box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.4);
         }
 
+        /* PROJECTS GRID */
         .projects {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
         }
 
+        /* PROJECT CARD + ANIMATED BORDER */
         .project-card {
             background: var(--card-bg);
             padding: 18px;
             border-radius: 14px;
             box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.4);
+            position: relative;
+            transition: 0.35s ease;
+            overflow: hidden;
         }
 
-        .project-img {
-            width: 100%;
-            border-radius: 12px;
+        .project-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+                    mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.25);
+        }
+
+        /* TAGS WITH ICONS */
+        .project-tags {
+            margin: 12px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-tags span {
+            background: rgba(148, 163, 184, 0.15);
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: var(--accent2);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            display: flex;
+            align-items: center;
+        }
+
+        .tag-icon {
+            width: 14px;
+            height: 14px;
+            margin-right: 6px;
+            filter: brightness(1.4);
+        }
+
+        /* BUTTON */
+        .project-btn {
+            display: inline-block;
             margin-top: 12px;
-            box-shadow: 0 0 0 1px rgba(148,163,184,0.4);
+            padding: 10px 18px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: white;
+            text-decoration: none;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: 0.25s ease;
+        }
+
+        .project-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(34, 211, 238, 0.35);
         }
 
         .timeline {
@@ -238,19 +307,14 @@
         <h2>About Me</h2>
         <p>
             I’m a software developer who blends full‑stack development, cloud engineering, and AI‑powered tools 
-            to build modern, efficient, and thoughtfully engineered systems. Whether I’m creating intuitive user 
-            interfaces, designing robust APIs, containerizing applications, or automating workflows across cloud 
-            environments, I focus on clean architecture, scalability, and real‑world impact.
+            to build modern, efficient, and thoughtfully engineered systems.
         </p>
         <p>
-            I enjoy taking complex technical challenges and turning them into reliable, high‑performance solutions. 
-            My work spans cloud platforms like AWS, Azure, and GCP, modern frameworks like FastAPI, and automation 
-            practices that make development smoother and smarter. I’m constantly exploring new technologies, 
-            experimenting with AI‑driven tooling, and improving the way systems are built, deployed, and maintained.
+            I enjoy taking complex technical challenges and turning them into reliable, high‑performance solutions.
         </p>
         <p>
             Beyond development, I also contribute to research — applying machine learning to high‑reliability 
-            engineering systems and exploring how AI can enhance predictive maintenance and industrial operations.
+            engineering systems and exploring how AI can enhance predictive maintenance.
         </p>
     </div>
 
@@ -275,27 +339,82 @@
         </div>
     </div>
 
-    <!-- PROJECTS -->
+    <!-- ⭐ PROJECTS -->
     <div class="section" id="projects">
         <h2>Projects</h2>
         <div class="projects">
 
+            <!-- URL SHORTENER -->
             <div class="project-card">
                 <h3>Cloud-Based URL Shortener</h3>
                 <p>Full-stack AWS application with Flask/FastAPI backend and DynamoDB.</p>
-                <img src="images/url_shortener.png" class="project-img">
+
+                <div class="project-tags">
+                    <span><img class="tag-icon" src="icons/python.svg"> Python</span>
+                    <span><img class="tag-icon" src="icons/aws.svg"> AWS</span>
+                    <span><img class="tag-icon" src="icons/docker.svg"> Docker</span>
+                    <span>FastAPI</span>
+                </div>
+
+                <a class="project-btn" href="https://github.com/KritikaGupta15/url-shortener" target="_blank">
+                    View Repo
+                </a>
             </div>
 
+            <!-- SMART CITY AI -->
             <div class="project-card">
                 <h3>Agentic AI Smart City Assistant</h3>
                 <p>DeepSeek fine-tuning, RAG, vector retrieval, and multi-agent orchestration.</p>
-                <img src="images/smart_city_ai.png" class="project-img">
+
+                <div class="project-tags">
+                    <span><img class="tag-icon" src="icons/python.svg"> Python</span>
+                    <span>RAG</span>
+                    <span>LLM</span>
+                    <span>DeepSeek</span>
+                </div>
+
+                <a class="project-btn" href="https://github.com/KritikaGupta15/smart-city-ai" target="_blank">
+                    View Repo
+                </a>
             </div>
 
+            <!-- ETL PIPELINE -->
             <div class="project-card">
                 <h3>ETL Pipeline Development</h3>
                 <p>Extract, clean, transform, and load structured datasets for analysis.</p>
-                <img src="images/etl_pipeline.png" class="project-img">
+
+                <div class="project-tags">
+                    <span><img class="tag-icon" src="icons/python.svg"> Python</span>
+                    <span>Pandas</span>
+                    <span>ETL</span>
+                    <span>Data Engineering</span>
+                </div>
+
+                <a class="project-btn" href="https://github.com/KritikaGupta15/etl-pipeline" target="_blank">
+                    View Repo
+                </a>
+            </div>
+
+            <!-- RUL PREDICTION -->
+            <div class="project-card">
+                <h3>Regime‑Aware RUL Prediction (IEEE)</h3>
+                <p>
+                    Deep-learning Remaining Useful Life (RUL) prediction using NASA CMAPSS turbofan engine data.
+                    Includes regime clustering, LSTM + Attention architecture, and an IEEE‑published paper.
+                </p>
+
+                <div class="project-tags">
+                    <span><img class="tag-icon" src="icons/python.svg"> Python</span>
+                    <span>Deep Learning</span>
+                    <span>LSTM</span>
+                    <span>Attention</span>
+                    <span>CMAPSS</span>
+                    <span>IEEE</span>
+                </div>
+
+                <a class="project-btn" href="https://github.com/KritikaGupta15/regime-aware-rul-prediction" target="_blank">
+                    View Repo
+                </a>
             </div>
 
         </div>
@@ -305,31 +424,11 @@
     <div class="section" id="publication">
         <h2>Publication</h2>
         <p>
-            I am a co-author of a peer-reviewed research paper published in IEEE, titled 
-            <strong>"Regime-Aware Deep Learning Framework for Predictive Maintenance in Industrial Systems"</strong>. 
-            This work focuses on Remaining Useful Life (RUL) prediction using NASA’s CMAPSS turbofan engine dataset, 
-            where we developed a regime-aware deep learning approach to improve predictive accuracy across varying 
-            operational conditions.
+            I am a co-author of a peer-reviewed research paper published in IEEE.
         </p>
-
         <p>
-            🔗 <strong>IEEE Xplore:</strong><br>
-            <a href="https://ieeexplore.ieee.org/document/11607667" target="_blank" style="color: var(--accent2);">
-                https://ieeexplore.ieee.org/document/11607667
-            </a>
-        </p>
-
-        <p>
-            📄 <strong>DOI:</strong><br>
-            <a href="https://doi.org/10.1109/MLISE70044.2026.11607667" target="_blank" style="color: var(--accent2);">
-                10.1109/MLISE70044.2026.11607667
-            </a>
-        </p>
-
-        <p>
-            🔗 <strong>LinkedIn Announcement:</strong><br>
-            <a href="https://lnkd.in/g5X_y9yY" target="_blank" style="color: var(--accent2);">
-                https://lnkd.in/g5X_y9yY
+            🔗 <a href="https://ieeexplore.ieee.org/document/11607667" target="_blank" style="color: var(--accent2);">
+                IEEE Xplore Link
             </a>
         </p>
     </div>
@@ -338,38 +437,10 @@
     <div class="section" id="experience">
         <h2>Experience</h2>
         <div class="timeline">
-
-            <p>
-                <strong>Data Science Fellow / AI Data Analyst — Chicago Education Advocacy Cooperative (ChiEAC)</strong><br>
-                <em>Jul 2026 – Present</em><br>
-                Designing scalable machine learning systems that transform organizational data into predictive, interpretable insights. 
-                Building Generative AI capabilities including LLM fine‑tuning, multi‑agent orchestration, and structured tool/function calling 
-                to automate workflows and improve operational efficiency. Contributing to applied AI research and production‑grade ML pipelines.
-            </p>
-
-            <p>
-                <strong>Software Engineering Intern — ThinkNext Technologies</strong><br>
-                <em>Jun 2022 – Jul 2022</em><br>
-                Developed backend services for a production inventory management system using Python and Django. 
-                Optimized database interactions across MySQL and Oracle to improve performance and reliability. 
-                Collaborated with frontend developers, participated in code reviews, and ensured maintainable, well‑documented code.
-            </p>
-
-            <p>
-                <strong>Python Programming Intern — GTB Institute</strong><br>
-                <em>Jul 2021 – Sep 2021</em><br>
-                Performed data analysis and visualization using Pandas and NumPy. 
-                Led a team of three to design and deliver a complete airline management system end‑to‑end, earning formal recognition for leadership, 
-                project ownership, and technical execution.
-            </p>
-
-            <p>
-                <strong>Team Member — CMU Dining Services</strong><br>
-                <em>Oct 2025 – May 2026</em><br>
-                Delivered efficient customer service in a fast‑paced environment, collaborating with a diverse team and maintaining smooth daily operations. 
-                Strengthened communication, teamwork, and responsibility — skills that translate directly into professional engineering environments.
-            </p>
-
+            <p><strong>Data Science Fellow — ChiEAC</strong></p>
+            <p><strong>Software Engineering Intern — ThinkNext</strong></p>
+            <p><strong>Python Intern — GTB Institute</strong></p>
+            <p><strong>Team Member — CMU Dining Services</strong></p>
         </div>
     </div>
 
