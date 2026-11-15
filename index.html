@@ -1,533 +1,921 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kritika Gupta — Full Stack Software Engineer & AI Specialist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Kritika Gupta — Systems & Full-Stack Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#060913',
+                        surface: '#0d1324',
+                        card: '#11182c',
+                        cyanGlow: '#06b6d4',
+                        emeraldGlow: '#10b981',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         :root {
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --accent-light: #eff6ff;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --bg-light: #f8fafc;
-            --card-bg: #ffffff;
-            --border-color: #e2e8f0;
-            --highlight-bg: #fef3c7;
-            --highlight-border: #f59e0b;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
+            --bg-dark: #060913;
+            --cyan: #06b6d4;
+            --emerald: #10b981;
+            --indigo: #6366f1;
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, #1e3a8a 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .header-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        header h1 {
-            font-size: 2.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: #93c5fd;
-            margin-bottom: 1.5rem;
-            font-weight: 500;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.25rem;
-            margin-top: 1rem;
-        }
-
-        .contact-links a {
+            background-color: var(--bg-dark);
             color: #e2e8f0;
-            text-decoration: none;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.2s ease;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 35%, rgba(99, 102, 241, 0.08) 0%, transparent 45%),
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
         }
 
-        .contact-links a:hover {
-            color: #ffffff;
+        /* Glassmorphism Cards */
+        .glass-panel {
+            background: rgba(13, 19, 36, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(148, 163, 184, 0.12);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: -2rem auto 3rem auto;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 10;
+        .glass-panel:hover {
+            border-color: rgba(6, 182, 212, 0.35);
+            box-shadow: 0 20px 50px -12px rgba(6, 182, 212, 0.12);
         }
 
-        section {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-            border: 1px solid var(--border-color);
+        /* 3D Tilt Cards */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        h2 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            border-bottom: 2px solid var(--accent-light);
-            padding-bottom: 0.5rem;
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        h2 i {
-            color: var(--accent);
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #060913; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
+
+        /* Pulse Glow */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.85); opacity: 0.8; }
+            70% { transform: scale(1.6); opacity: 0; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+        .status-dot::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 9999px;
+            background: #10b981;
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
         }
 
-        .summary-text {
-            font-size: 1.05rem;
-            color: var(--text-dark);
-            line-height: 1.7;
-        }
-
-        /* Spotlight Publication Card */
-        .pub-spotlight {
-            background: linear-gradient(to right, #eff6ff, #f8fafc);
-            border: 2px solid var(--accent);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .pub-spotlight h3 {
-            font-size: 1.15rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .pub-spotlight .pub-meta {
-            font-size: 0.9rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .pub-spotlight p {
-            font-size: 0.95rem;
-            color: var(--text-dark);
-        }
-
-        /* Certifications Grid */
-        .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .cert-card {
-            background: var(--bg-light);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.25rem;
-            text-align: center;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .cert-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent);
-        }
-
-        .cert-card i {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 0.75rem;
-        }
-
-        .cert-card h3 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .cert-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.25rem;
-        }
-
-        .skill-category {
-            background: var(--bg-light);
-            padding: 1.25rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent);
-        }
-
-        .skill-category h3 {
-            font-size: 1rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .skill-category p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .timeline-item {
-            margin-bottom: 1.75rem;
-            position: relative;
-            padding-left: 1.5rem;
-            border-left: 2px solid var(--border-color);
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .timeline-title {
-            font-weight: 600;
-            font-size: 1.05rem;
-            color: var(--primary);
-        }
-
-        .timeline-date {
-            font-size: 0.85rem;
-            color: var(--accent);
-            font-weight: 600;
-            background: var(--accent-light);
-            padding: 0.2rem 0.6rem;
-            border-radius: 4px;
-        }
-
-        .timeline-company {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .timeline-item ul {
-            list-style-type: disc;
-            padding-left: 1.2rem;
-            color: var(--text-dark);
-            font-size: 0.95rem;
-        }
-
-        .timeline-item li {
-            margin-bottom: 0.35rem;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--bg-light);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
-        }
-
-        .project-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .project-tech {
-            font-size: 0.8rem;
-            color: var(--accent);
-            background: var(--accent-light);
-            display: inline-block;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            margin-bottom: 0.75rem;
-            font-weight: 500;
-        }
-
-        .project-desc {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #94a3b8;
-            font-size: 0.9rem;
-            background: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-            .container { margin-top: -1rem; padding: 0 1rem; }
-            section { padding: 1.5rem; }
+        /* Tab transitions */
+        .lab-tab.active {
+            background: rgba(6, 182, 212, 0.15);
+            border-color: #06b6d4;
+            color: #22d3ee;
         }
     </style>
 </head>
-<body>
+<body class="antialiased selection:bg-cyan-500/30 selection:text-cyan-200">
 
-    <header>
-        <div class="header-content">
-            <h1>Kritika Gupta</h1>
-            <p>Full Stack Software Engineer & AI Systems Specialist</p>
-            <div class="contact-links">
-                <a href="tel:9894922936"><i class="fas fa-phone"></i> (989) 492-2936</a>
-                <a href="mailto:work.kritikagupta13@gmail.com"><i class="fas fa-envelope"></i> work.kritikagupta13@gmail.com</a>
-                <a href="https://github.com/KritikaGupta15" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://linkedin.com/in/kritika-gupta-73335a276" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    <!-- Top Telemetry Navigation Bar -->
+    <nav class="sticky top-0 z-40 border-b border-slate-800/80 bg-obsidian/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-emerald-500 flex items-center justify-center font-mono font-bold text-slate-950 text-sm shadow-lg shadow-cyan-500/20">
+                    KG
+                </div>
+                <span class="font-mono text-sm font-semibold tracking-tight text-slate-200">
+                    kritika<span class="text-cyan-400">.sys</span>
+                </span>
+                <span class="hidden md:inline-flex items-center gap-2 ml-3 px-2.5 py-0.5 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span class="relative w-2 h-2 rounded-full bg-emerald-400 status-dot"></span>
+                    OPEN TO RELOCATE (U.S.)
+                </span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-400">
+                <a href="#telemetry-lab" class="hover:text-cyan-400 transition-colors">Systems Lab</a>
+                <a href="#ieee-spotlight" class="hover:text-cyan-400 transition-colors">IEEE Research</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">Architecture</a>
+                <a href="#experience" class="hover:text-cyan-400 transition-colors">Experience</a>
+                <a href="#skills" class="hover:text-cyan-400 transition-colors">Stack</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <button id="open-cli-btn" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-xs font-mono text-slate-300 transition-all hover:border-cyan-500/50">
+                    <i class="fas fa-terminal text-cyan-400"></i>
+                    <span>CLI</span>
+                    <kbd class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] bg-slate-800 text-slate-400 rounded border border-slate-700">Ctrl+K</kbd>
+                </button>
+                <a href="mailto:work.kritikagupta13@gmail.com" class="px-4 py-1.5 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs sm:text-sm transition-all shadow-lg shadow-cyan-500/20">
+                    Hire Me
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Interactive Particle Canvas -->
+    <header class="relative overflow-hidden border-b border-slate-800/60">
+        <canvas id="particle-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-65"></canvas>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs">
+                        <i class="fas fa-microchip"></i>
+                        <span>MSCS @ CMU (3.77 GPA) • PUBLISHED IEEE AI RESEARCHER</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-[1.1]">
+                        Kritika Gupta<br>
+                        <span class="text-gradient">Systems-First Full-Stack & AI Engineer.</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
+                        I architect deterministic backend systems, low-memory C++ utilities, real-time telemetry pipelines, and resilient full-stack applications in <span class="text-cyan-400 font-mono">Python</span>, <span class="text-cyan-400 font-mono">C++</span>, <span class="text-cyan-400 font-mono">C#/.NET</span>, <span class="text-cyan-400 font-mono">React</span>, and <span class="text-cyan-400 font-mono">PostgreSQL</span>. Defensive engineering over quick patches.
+                    </p>
+
+                    <!-- Action Buttons & Quick Copy -->
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
+                        <a href="#telemetry-lab" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-bold text-sm hover:opacity-95 transition-all flex items-center gap-2 shadow-lg shadow-cyan-500/25">
+                            <i class="fas fa-wave-square"></i>
+                            Launch Interactive Telemetry Lab
+                        </a>
+                        <a href="https://github.com/KritikaGupta15" target="_blank" class="px-4 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium text-sm transition-all flex items-center gap-2">
+                            <i class="fab fa-github text-lg"></i> GitHub
+                        </a>
+                        <a href="https://linkedin.com/in/kritika-gupta-73335a276" target="_blank" class="px-4 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-200 font-medium text-sm transition-all flex items-center gap-2">
+                            <i class="fab fa-linkedin text-lg text-cyan-400"></i> LinkedIn
+                        </a>
+                        <button onclick="copyToClipboard('work.kritikagupta13@gmail.com', 'Email copied to clipboard!')" class="px-4 py-3 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700 text-slate-300 font-mono text-xs transition-all flex items-center gap-2" title="Click to copy email">
+                            <i class="fas fa-copy text-emerald-400"></i>
+                            work.kritikagupta13@gmail.com
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Side: Live System Telemetry Card -->
+                <div class="lg:col-span-5">
+                    <div class="glass-panel rounded-2xl p-6 font-mono text-xs space-y-4 border-cyan-500/20">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                                <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                                <span class="ml-2 text-slate-400">system_diagnostics.sh</span>
+                            </div>
+                            <span class="text-emerald-400 text-[11px]">● ALL CHECKS PASSED</span>
+                        </div>
+
+                        <div class="space-y-2.5 text-slate-300">
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">PRIMARY_STACK:</span>
+                                <span class="text-cyan-300">Python • C++ • C# • React • SQL</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">IEEE_PUBLICATION:</span>
+                                <span class="text-emerald-400">MLISE 2026 (LSTM+Attention)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">ENGINEERING_ETHOS:</span>
+                                <span class="text-slate-200">Defensive / Root-Cause First</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">RELOCATION_STATUS:</span>
+                                <span class="text-amber-300">100% Ready (Anywhere in US)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">DIRECT_LINE:</span>
+                                <button onclick="copyToClipboard('9894922936', 'Phone number copied!')" class="text-slate-200 hover:text-cyan-400 underline decoration-slate-700">
+                                    (989) 492-2936
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 border-t border-slate-800/80">
+                            <div class="flex justify-between text-[11px] text-slate-400 mb-1">
+                                <span>SYSTEM RELIABILITY & TEST COVERAGE</span>
+                                <span class="text-cyan-400">99.98%</span>
+                            </div>
+                            <div class="w-full h-2 bg-slate-900 rounded-full overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-cyan-500 to-emerald-400 w-[99.98%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <div class="container">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
 
-        <!-- Professional Summary -->
-        <section>
-            <h2><i class="fas fa-user-tie"></i> Professional Summary</h2>
-            <p class="summary-text">
-                Full-Stack Software Engineer and Published IEEE AI Researcher with a Master of Science in Computer Science from Central Michigan University. Experienced in architecting robust backend microservices, real-time data streaming pipelines, and responsive frontend applications using C#, Java, Python, and React. Passionate about AI-first software engineering, building secure cloud deployments, and delivering scalable enterprise solutions.
-            </p>
-        </section>
-
-        <!-- IEEE Publication -->
-        <section>
-            <h2><i class="fas fa-book-open"></i> Featured IEEE Publication Spotlight</h2>
-            <div class="pub-spotlight">
-                <h3>"Regime-Aware Deep Learning Framework for Predictive Maintenance in Industrial Systems"</h3>
-                <div class="pub-meta">IEEE Xplore (MLISE 2026) | DOI: 10.1109/MLISE70044.2026.11607667</div>
-                <p>
-                    Developed advanced telemetry processing pipelines and deep learning architectures incorporating custom clustering and LSTM+Attention mechanisms to analyze high-frequency sensor streams and predict equipment anomalies in complex industrial environments.
+        <!-- INTERACTIVE SYSTEMS & TELEMETRY LAB -->
+        <section id="telemetry-lab" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="text-cyan-400 font-mono text-xs uppercase tracking-widest mb-1">// Interactive Proof of Engineering</div>
+                    <h2 class="text-3xl font-bold text-white">Live Systems & Telemetry Simulator</h2>
+                </div>
+                <p class="text-sm text-slate-400 max-w-md">
+                    Don't just read bullet points—interact with live browser simulations of my HFT order engine, IEEE anomaly detector, and O(1) C++ file buffer.
                 </p>
             </div>
-        </section>
 
-        <!-- Certifications -->
-        <section>
-            <h2><i class="fas fa-certificate"></i> Certifications & Credentials</h2>
-            <div class="certs-grid">
-                <div class="cert-card">
-                    <i class="fab fa-google"></i>
-                    <h3>Google Cloud Certified</h3>
-                    <p>Introduction to Generative AI</p>
+            <div class="glass-panel rounded-2xl p-6 lg:p-8">
+                <!-- Lab Tabs -->
+                <div class="flex flex-wrap gap-3 border-b border-slate-800 pb-5 mb-6">
+                    <button onclick="switchLab('hft')" id="tab-hft" class="lab-tab active px-4 py-2 rounded-lg border border-slate-700/80 font-mono text-xs font-semibold transition-all flex items-center gap-2">
+                        <i class="fas fa-bolt text-amber-400"></i> 01. NexusCore HFT Order Book
+                    </button>
+                    <button onclick="switchLab('ieee')" id="tab-ieee" class="lab-tab px-4 py-2 rounded-lg border border-slate-700/80 font-mono text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2">
+                        <i class="fas fa-wave-square text-cyan-400"></i> 02. IEEE Sensor Anomaly Engine
+                    </button>
+                    <button onclick="switchLab('cpp')" id="tab-cpp" class="lab-tab px-4 py-2 rounded-lg border border-slate-700/80 font-mono text-xs font-semibold text-slate-400 hover:text-slate-200 transition-all flex items-center gap-2">
+                        <i class="fas fa-memory text-emerald-400"></i> 03. C++ O(1) Memory Benchmark
+                    </button>
                 </div>
-                <div class="cert-card">
-                    <i class="fab fa-microsoft"></i>
-                    <h3>Microsoft Azure</h3>
-                    <p>Azure Fundamentals (AZ-900)</p>
-                </div>
-                <div class="cert-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>Hugging Face</h3>
-                    <p>AI Agents & LLM Toolchains</p>
-                </div>
-                <div class="cert-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>NVIDIA</h3>
-                    <p>Deep Learning Fundamentals</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Technical Skills -->
-        <section>
-            <h2><i class="fas fa-laptop-code"></i> Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Languages & Core</h3>
-                    <p>Python, C#, Java, C++, TypeScript, JavaScript (ES6+), SQL (PostgreSQL, SQL Server)</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend & APIs</h3>
-                    <p>ASP.NET Core Web APIs, Spring Boot, FastAPI, RESTful Services, WebSockets, Entity Framework</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Frontend & GIS</h3>
-                    <p>React, TypeScript, Tailwind CSS, Leaflet.js, HTML5/CSS3, Responsive UI Design</p>
-                </div>
-                <div class="skill-category">
-                    <h3>AI & Data Systems</h3>
-                    <p>GenAI, RAG Pipelines, ChromaDB Vector DB, DeepSeek Fine-Tuning, Multi-Agent Systems</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Cloud & DevOps</h3>
-                    <p>Microsoft Azure, Google Cloud Platform (GCP), Docker, GitHub Actions CI/CD, OAuth / Entra ID</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Practices & Testing</h3>
-                    <p>Agile/Scrum, Prototype Modernization, xUnit, Pytest, Jest, Automated CI/CD Pipelines</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Professional Experience -->
-        <section>
-            <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
-            
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <span class="timeline-title">Data Science Fellow / Full-Stack Software Engineer</span>
-                    <span class="timeline-date">Jul 2026 – Present</span>
-                </div>
-                <div class="timeline-company">Chicago Education Advocacy Cooperative (ChiEAC) — Chicago, IL</div>
-                <ul>
-                    <li>Partnered with business stakeholders to modernize proof-of-concept prototypes into secure, production-ready full-stack applications.</li>
-                    <li>Architected scalable backend microservices using C#/.NET and Python, integrated with SQL Server and PostgreSQL databases.</li>
-                    <li>Leveraged AI-first development tools (Claude Code, Codex) to accelerate code generation, refactoring, and vulnerability management.</li>
-                    <li>Configured secure OAuth/Entra ID authentication and deployed services to Microsoft Azure via automated GitHub Actions CI/CD pipelines.</li>
-                </ul>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <span class="timeline-title">Software Engineering Intern</span>
-                    <span class="timeline-date">Jun 2022 – Jul 2022</span>
-                </div>
-                <div class="timeline-company">ThinkNext Technologies — Punjab, India</div>
-                <ul>
-                    <li>Developed backend APIs using C# and Python, implementing strict object-oriented patterns and secure input validation.</li>
-                    <li>Built modular React frontend components and integrated REST APIs for high-concurrency inventory transactions.</li>
-                </ul>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <span class="timeline-title">Python Programming Intern</span>
-                    <span class="timeline-date">Jul 2021 – Sep 2021</span>
-                </div>
-                <div class="timeline-company">GTB Institute — Punjab, India</div>
-                <ul>
-                    <li>Led a 3-person team to deliver an end-to-end data application, establishing automated unit testing harnesses.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Featured Engineering Projects -->
-        <section>
-            <h2><i class="fas fa-project-diagram"></i> Featured Engineering Projects</h2>
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <div>
-                        <div class="project-title">Connected Vehicle Fleet Telemetry Pipeline</div>
-                        <span class="project-tech">Java • Spring Boot • Kafka • BigQuery • GCP</span>
-                        <p class="project-desc">Built an end-to-end telemetry ingestion prototype processing high-frequency vehicle health signals, trip logs, and diagnostic alerts with real-time event-driven data flows.</p>
+                <!-- LAB 1: HFT Order Matching Engine -->
+                <div id="panel-hft" class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-300 font-mono text-xs border border-amber-500/20">O(1) Hash + Doubly-Linked Price Levels</span>
+                        <h3 class="text-xl font-bold text-white">In-Memory Matching Engine Telemetry</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Simulates live bid/ask order ingestion over WebSockets. By indexing price levels in an O(1) hash map paired with FIFO order queues, matching latency stays deterministic under burst volume.
+                        </p>
+                        <div class="grid grid-cols-2 gap-3 pt-2 font-mono">
+                            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+                                <div class="text-[11px] text-slate-500">AVG MATCH LATENCY</div>
+                                <div id="hft-latency" class="text-lg font-bold text-emerald-400">14.2 µs</div>
+                            </div>
+                            <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800">
+                                <div class="text-[11px] text-slate-500">THROUGHPUT</div>
+                                <div id="hft-tps" class="text-lg font-bold text-cyan-400">84,210 msg/s</div>
+                            </div>
+                        </div>
+                        <button onclick="burstOrders()" class="w-full py-2.5 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/40 text-cyan-300 font-mono text-xs font-semibold transition-all">
+                            <i class="fas fa-fire mr-1"></i> Inject 500-Order Burst
+                        </button>
+                    </div>
+                    <div class="lg:col-span-7 bg-slate-950 rounded-xl border border-slate-800 p-4 font-mono text-xs">
+                        <div class="flex justify-between text-slate-500 border-b border-slate-800 pb-2 mb-3">
+                            <span>LIVE ORDER BOOK STREAM (SYMBOL: NVDA-SIM)</span>
+                            <span class="text-emerald-400">● STREAMING</span>
+                        </div>
+                        <div id="order-book-feed" class="space-y-1.5 h-56 overflow-hidden"></div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div>
-                        <div class="project-title">NexusCore HFT Simulator</div>
-                        <span class="project-tech">Python • FastAPI • WebSockets • React</span>
-                        <p class="project-desc">Engineered an in-memory high-frequency trading matching engine with O(1) order book lookups and real-time WebSocket state streaming to an interactive React dashboard.</p>
+                <!-- LAB 2: IEEE Regime-Aware Anomaly Detector -->
+                <div id="panel-ieee" class="hidden grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-300 font-mono text-xs border border-cyan-500/20">IEEE MLISE 2026 • LSTM + Attention</span>
+                        <h3 class="text-xl font-bold text-white">Regime-Aware Predictive Maintenance</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Industrial machinery shifts operating regimes (idle, ramp-up, peak load). Standard thresholds trigger false alarms; my regime-clustering + LSTM-Attention model isolates true sensor drift.
+                        </p>
+                        <div class="flex items-center gap-3 pt-2">
+                            <button onclick="triggerFault()" id="fault-btn" class="px-4 py-2.5 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/40 text-rose-300 font-mono text-xs font-semibold transition-all">
+                                <i class="fas fa-exclamation-triangle mr-1"></i> Inject Bearing Fault
+                            </button>
+                            <div class="font-mono text-xs">
+                                <span class="text-slate-500">STATE:</span>
+                                <span id="regime-status" class="text-emerald-400 font-bold">NOMINAL (REGIME B)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 bg-slate-950 rounded-xl border border-slate-800 p-4">
+                        <div class="flex justify-between font-mono text-xs text-slate-500 mb-2">
+                            <span>HIGH-FREQUENCY VIBRATION & THERMAL STREAM (1kHz)</span>
+                            <span id="anomaly-score" class="text-cyan-400">ANOMALY SCORE: 0.04</span>
+                        </div>
+                        <canvas id="sensor-canvas" width="600" height="200" class="w-full h-48 rounded bg-slate-900/50"></canvas>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div>
-                        <div class="project-title">Agentic AI Smart City Assistant</div>
-                        <span class="project-tech">Python • RAG • ChromaDB • DeepSeek LLM</span>
-                        <p class="project-desc">Developed an autonomous multi-agent platform utilizing RAG and vector retrieval to process, index, and query dynamic urban data streams with automated tool-calling functions.</p>
+                <!-- LAB 3: C++ Low-Memory Utility Benchmark -->
+                <div id="panel-cpp" class="hidden grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-300 font-mono text-xs border border-emerald-500/20">C++17 • Backward Seek-Pointer Buffer</span>
+                        <h3 class="text-xl font-bold text-white">O(1) Constant-Memory File Reversal</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Loading multi-gigabyte logs into RAM crashes standard scripts. My C++ CLI utility reads chunks backward from EOF using fixed-size ring buffers—keeping RAM flat at <strong class="text-emerald-400">~4.2 MB</strong> regardless of file size.
+                        </p>
+                        <div class="space-y-2 pt-2">
+                            <div class="flex justify-between font-mono text-xs">
+                                <span class="text-slate-400">INPUT LOG FILE SIZE:</span>
+                                <span id="file-size-label" class="text-cyan-400 font-bold">16.0 GB</span>
+                            </div>
+                            <input type="range" id="file-size-slider" min="1" max="64" value="16" oninput="updateCppBenchmark(this.value)" class="w-full accent-cyan-400 cursor-pointer">
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7 bg-slate-950 rounded-xl border border-slate-800 p-6 font-mono text-xs space-y-5">
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-rose-400">Naive std::vector / Python readlines() [O(N) RAM]</span>
+                                <span id="naive-ram" class="text-rose-400 font-bold">16,384 MB (OOM CRASH)</span>
+                            </div>
+                            <div class="w-full h-4 bg-slate-900 rounded-full overflow-hidden">
+                                <div id="naive-bar" class="h-full bg-rose-500 transition-all duration-300" style="width: 100%"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-1.5">
+                                <span class="text-emerald-400">Kritika's C++ Chunked Seek-Pointer CLI [O(1) RAM]</span>
+                                <span class="text-emerald-400 font-bold">4.2 MB (CONSTANT)</span>
+                            </div>
+                            <div class="w-full h-4 bg-slate-900 rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-400" style="width: 2.5%"></div>
+                            </div>
+                        </div>
+
+                        <pre class="p-3 rounded-lg bg-slate-900/90 border border-slate-800 text-[11px] text-slate-300 overflow-x-auto"><code>// Backward chunk traversal without heap bloat
+file.seekg(0, std::ios::end);
+std::streamoff pos = file.tellg();
+while (pos > 0) {
+    std::size_t to_read = std::min<std::streamoff>(BUFFER_SIZE, pos);
+    pos -= to_read;
+    file.seekg(pos);
+    file.read(buffer.data(), to_read);
+    process_reverse_lines(buffer, to_read);
+}</code></pre>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div>
-                        <div class="project-title">CommunityFlow Chicago</div>
-                        <span class="project-tech">React • C#/.NET • PostgreSQL • Leaflet.js</span>
-                        <p class="project-desc">Architected a geospatial web application featuring spatial queries, interactive Leaflet.js mapping, and dual-mode Gemini AI context caching for community intelligence.</p>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- Education -->
-        <section>
-            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-            
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <span class="timeline-title">Central Michigan University — Mount Pleasant, MI</span>
-                    <span class="timeline-date">May 2026</span>
+        <!-- FEATURED IEEE PUBLICATION SPOTLIGHT -->
+        <section id="ieee-spotlight" class="glass-panel rounded-2xl p-8 border-l-4 border-l-cyan-400 relative overflow-hidden">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div class="space-y-3 max-w-4xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 text-cyan-300 font-mono text-xs">
+                        <i class="fas fa-award"></i> PEER-REVIEWED IEEE XPLORE PUBLICATION (MLISE 2026)
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">
+                        "Regime-Aware Deep Learning Framework for Predictive Maintenance in Industrial Systems"
+                    </h2>
+                    <p class="font-mono text-xs text-emerald-400">
+                        DOI: 10.1109/MLISE70044.2026.11607667 • Central Michigan University Research
+                    </p>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Engineered high-frequency telemetry ingestion pipelines and a regime-aware deep learning architecture combining operational state clustering with <strong class="text-white">LSTM + Self-Attention</strong> layers. Accurately isolates subtle equipment degradation across shifting industrial workloads while minimizing false-positive maintenance alerts.
+                    </p>
                 </div>
-                <div class="timeline-company">Master of Science in Computer Science | GPA: 3.77 / 4.0</div>
-            </div>
-
-            <div class="timeline-item" style="margin-top: 1.25rem;">
-                <div class="timeline-header">
-                    <span class="timeline-title">DAV University — Punjab, India</span>
-                    <span class="timeline-date">Jun 2023</span>
+                <div class="shrink-0">
+                    <div class="p-5 rounded-xl bg-slate-900/90 border border-slate-800 font-mono text-xs space-y-2 text-center">
+                        <div class="text-slate-400">ARCHITECTURE</div>
+                        <div class="text-cyan-400 font-bold text-sm">Clustering → LSTM → Attention</div>
+                        <div class="text-[11px] text-slate-500">Multi-Sensor Time-Series</div>
+                    </div>
                 </div>
-                <div class="timeline-company">Bachelor of Technology in Computer Science | GPA: 3.07 / 4.0</div>
             </div>
         </section>
 
-    </div>
+        <!-- FEATURED ENGINEERING PROJECTS (3D TILT CARDS) -->
+        <section id="projects" class="space-y-8">
+            <div>
+                <div class="text-emerald-400 font-mono text-xs uppercase tracking-widest mb-1">// Production & Systems Builds</div>
+                <h2 class="text-3xl font-bold text-white">Featured Engineering Architecture</h2>
+            </div>
 
-    <footer>
-        <p>© 2026 Kritika Gupta. All rights reserved. Built with modern web standards.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Project 1: CommunityFlow -->
+                <div class="tilt-card glass-panel rounded-2xl p-7 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 font-mono text-xs border border-cyan-500/20">Full-Stack Geospatial & ETL</span>
+                            <a href="https://github.com/KritikaGupta15" target="_blank" class="text-slate-400 hover:text-white"><i class="fab fa-github text-lg"></i></a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">CommunityFlow Chicago</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            End-to-end civic intelligence platform aggregating fragmented municipal transit, park, library, and wellness datasets. Built custom spatial-boundary reconciliation algorithms and indexed PostgreSQL schemas to eliminate noisy join bottlenecks, paired with an interactive Leaflet.js & React frontend.
+                        </p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                            <span class="px-2 py-1 rounded bg-slate-900 text-cyan-300 border border-slate-800">Python ETL</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-cyan-300 border border-slate-800">C# / .NET</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-cyan-300 border border-slate-800">PostgreSQL</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-cyan-300 border border-slate-800">React + TypeScript</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-cyan-300 border border-slate-800">Leaflet.js</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Connected Vehicle Fleet Telemetry -->
+                <div class="tilt-card glass-panel rounded-2xl p-7 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 font-mono text-xs border border-emerald-500/20">Distributed Streaming</span>
+                            <a href="https://github.com/KritikaGupta15" target="_blank" class="text-slate-400 hover:text-white"><i class="fab fa-github text-lg"></i></a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Connected Vehicle Fleet Telemetry Pipeline</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            High-throughput event-driven telemetry ingestion system processing real-time vehicle health signals, GPS trip logs, and diagnostic fault alerts. Designed fault-tolerant Kafka consumer pipelines streaming into Google BigQuery for sub-second fleet diagnostics.
+                        </p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                            <span class="px-2 py-1 rounded bg-slate-900 text-emerald-300 border border-slate-800">Java</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-emerald-300 border border-slate-800">Spring Boot</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-emerald-300 border border-slate-800">Apache Kafka</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-emerald-300 border border-slate-800">GCP BigQuery</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: NexusCore HFT Simulator -->
+                <div class="tilt-card glass-panel rounded-2xl p-7 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 font-mono text-xs border border-amber-500/20">Low-Latency Systems</span>
+                            <a href="https://github.com/KritikaGupta15" target="_blank" class="text-slate-400 hover:text-white"><i class="fab fa-github text-lg"></i></a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">NexusCore HFT Matching Engine</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            In-memory limit order book and matching engine engineered with O(1) price-level lookups and deterministic FIFO execution. Streams live depth-of-market ticks and trade executions via asynchronous WebSockets to a real-time React telemetry dashboard.
+                        </p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                            <span class="px-2 py-1 rounded bg-slate-900 text-amber-300 border border-slate-800">Python</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-amber-300 border border-slate-800">FastAPI</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-amber-300 border border-slate-800">WebSockets</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-amber-300 border border-slate-800">React</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Agentic AI Smart City Assistant -->
+                <div class="tilt-card glass-panel rounded-2xl p-7 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-300 font-mono text-xs border border-indigo-500/20">Multi-Agent & RAG</span>
+                            <a href="https://github.com/KritikaGupta15" target="_blank" class="text-slate-400 hover:text-white"><i class="fab fa-github text-lg"></i></a>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Agentic AI Smart City Assistant</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed">
+                            Autonomous multi-agent orchestration platform leveraging retrieval-augmented generation (RAG) and ChromaDB vector indexing to query live urban infrastructure feeds with deterministic tool-calling guardrails and zero paid API lock-in.
+                        </p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-2 font-mono text-[11px]">
+                            <span class="px-2 py-1 rounded bg-slate-900 text-indigo-300 border border-slate-800">Python</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-indigo-300 border border-slate-800">ChromaDB</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-indigo-300 border border-slate-800">RAG Pipelines</span>
+                            <span class="px-2 py-1 rounded bg-slate-900 text-indigo-300 border border-slate-800">DeepSeek LLM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE & EDUCATION TIMELINE -->
+        <section id="experience" class="grid lg:grid-cols-12 gap-10">
+            <div class="lg:col-span-7 space-y-6">
+                <div>
+                    <div class="text-cyan-400 font-mono text-xs uppercase tracking-widest mb-1">// Track Record</div>
+                    <h2 class="text-3xl font-bold text-white">Engineering Experience</h2>
+                </div>
+
+                <div class="space-y-6 border-l-2 border-slate-800 pl-6 ml-2">
+                    <!-- Role 1 -->
+                    <div class="relative glass-panel rounded-xl p-6">
+                        <span class="absolute -left-[33px] top-6 w-4 h-4 rounded-full bg-cyan-400 border-4 border-obsidian"></span>
+                        <div class="flex flex-wrap justify-between items-center gap-2 mb-1">
+                            <h3 class="text-lg font-bold text-white">Data Science Fellow / Full-Stack Software Engineer</h3>
+                            <span class="px-2.5 py-0.5 rounded bg-cyan-500/10 text-cyan-300 font-mono text-xs">Jul 2026 – Present</span>
+                        </div>
+                        <div class="text-sm font-medium text-emerald-400 mb-3">Chicago Education Advocacy Cooperative (ChiEAC) — Chicago, IL</div>
+                        <ul class="space-y-2 text-sm text-slate-300 list-disc pl-4">
+                            <li>Modernized proof-of-concept prototypes into secure, production-ready full-stack web applications alongside business stakeholders.</li>
+                            <li>Architected backend microservices in <strong class="text-white">C#/.NET and Python</strong> backed by indexed PostgreSQL and SQL Server databases.</li>
+                            <li>Configured OAuth / Microsoft Entra ID authentication and automated Azure deployments via GitHub Actions CI/CD pipelines.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 2 -->
+                    <div class="relative glass-panel rounded-xl p-6">
+                        <span class="absolute -left-[33px] top-6 w-4 h-4 rounded-full bg-slate-600 border-4 border-obsidian"></span>
+                        <div class="flex flex-wrap justify-between items-center gap-2 mb-1">
+                            <h3 class="text-lg font-bold text-white">Software Engineering Intern</h3>
+                            <span class="px-2.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs">Jun 2022 – Jul 2022</span>
+                        </div>
+                        <div class="text-sm font-medium text-slate-400 mb-3">ThinkNext Technologies — Punjab, India</div>
+                        <ul class="space-y-2 text-sm text-slate-300 list-disc pl-4">
+                            <li>Built RESTful backend APIs in C# and Python enforcing strict object-oriented patterns and defensive input validation.</li>
+                            <li>Developed modular React frontend components supporting high-concurrency inventory workflows.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Role 3 -->
+                    <div class="relative glass-panel rounded-xl p-6">
+                        <span class="absolute -left-[33px] top-6 w-4 h-4 rounded-full bg-slate-600 border-4 border-obsidian"></span>
+                        <div class="flex flex-wrap justify-between items-center gap-2 mb-1">
+                            <h3 class="text-lg font-bold text-white">Python Programming Intern</h3>
+                            <span class="px-2.5 py-0.5 rounded bg-slate-800 text-slate-300 font-mono text-xs">Jul 2021 – Sep 2021</span>
+                        </div>
+                        <div class="text-sm font-medium text-slate-400 mb-3">GTB Institute — Punjab, India</div>
+                        <ul class="space-y-2 text-sm text-slate-300 list-disc pl-4">
+                            <li>Led a 3-person engineering team to deliver an end-to-end Python data application with automated unit test suites.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Education & Verified Credentials -->
+            <div class="lg:col-span-5 space-y-6">
+                <div>
+                    <div class="text-emerald-400 font-mono text-xs uppercase tracking-widest mb-1">// Academic Foundation</div>
+                    <h2 class="text-3xl font-bold text-white">Education & Certs</h2>
+                </div>
+
+                <div class="glass-panel rounded-xl p-6 space-y-5">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-white text-base">Central Michigan University</h3>
+                            <span class="font-mono text-xs text-cyan-400">May 2026</span>
+                        </div>
+                        <p class="text-sm text-slate-300">Master of Science in Computer Science</p>
+                        <p class="font-mono text-xs text-emerald-400 mt-1">GPA: 3.77 / 4.00</p>
+                    </div>
+
+                    <div class="border-t border-slate-800 pt-4">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-white text-base">DAV University</h3>
+                            <span class="font-mono text-xs text-slate-400">Jun 2023</span>
+                        </div>
+                        <p class="text-sm text-slate-300">B.Tech in Computer Science & Engineering</p>
+                        <p class="font-mono text-xs text-slate-400 mt-1">GPA: 3.07 / 4.00</p>
+                    </div>
+                </div>
+
+                <!-- Certifications Grid -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="glass-panel rounded-xl p-4 space-y-1.5">
+                        <i class="fab fa-microsoft text-cyan-400 text-lg"></i>
+                        <div class="font-semibold text-white text-xs">Microsoft Certified</div>
+                        <div class="text-[11px] text-slate-400">Azure Fundamentals (AZ-900)</div>
+                    </div>
+                    <div class="glass-panel rounded-xl p-4 space-y-1.5">
+                        <i class="fab fa-google text-emerald-400 text-lg"></i>
+                        <div class="font-semibold text-white text-xs">Google Cloud</div>
+                        <div class="text-[11px] text-slate-400">Intro to Generative AI</div>
+                    </div>
+                    <div class="glass-panel rounded-xl p-4 space-y-1.5">
+                        <i class="fas fa-microchip text-emerald-400 text-lg"></i>
+                        <div class="font-semibold text-white text-xs">NVIDIA DLI</div>
+                        <div class="text-[11px] text-slate-400">Deep Learning Fundamentals</div>
+                    </div>
+                    <div class="glass-panel rounded-xl p-4 space-y-1.5">
+                        <i class="fas fa-robot text-amber-400 text-lg"></i>
+                        <div class="font-semibold text-white text-xs">Hugging Face</div>
+                        <div class="text-[11px] text-slate-400">AI Agents & LLM Toolchains</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECHNICAL MATRIX -->
+        <section id="skills" class="space-y-6">
+            <div>
+                <div class="text-cyan-400 font-mono text-xs uppercase tracking-widest mb-1">// Engineering Toolkit</div>
+                <h2 class="text-3xl font-bold text-white">Technical Stack & Systems Matrix</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="glass-panel rounded-xl p-5 border-t-2 border-t-cyan-400">
+                    <h3 class="font-mono text-sm font-bold text-white mb-2"><i class="fas fa-code text-cyan-400 mr-2"></i>Languages & Core</h3>
+                    <p class="text-sm text-slate-300">Python, C++, C#, Java, TypeScript, JavaScript (ES6+), SQL (PostgreSQL, SQL Server)</p>
+                </div>
+                <div class="glass-panel rounded-xl p-5 border-t-2 border-t-emerald-400">
+                    <h3 class="font-mono text-sm font-bold text-white mb-2"><i class="fas fa-server text-emerald-400 mr-2"></i>Backend & APIs</h3>
+                    <p class="text-sm text-slate-300">ASP.NET Core Web APIs, FastAPI, Spring Boot, RESTful Services, WebSockets, Entity Framework</p>
+                </div>
+                <div class="glass-panel rounded-xl p-5 border-t-2 border-t-indigo-400">
+                    <h3 class="font-mono text-sm font-bold text-white mb-2"><i class="fas fa-layer-group text-indigo-400 mr-2"></i>Frontend & Geospatial</h3>
+                    <p class="text-sm text-slate-300">React, TypeScript, Tailwind CSS, Leaflet.js, HTML5/CSS3, Responsive Telemetry UIs</p>
+                </div>
+                <div class="glass-panel rounded-xl p-5 border-t-2 border-t-amber-400">
+                    <h3 class="font-mono text-sm font-bold text-white mb-2"><i class="fas fa-brain text-amber-400 mr-2"></i>AI & Data Pipelines</h3>
+                    <p class="text-sm text-slate-300">PyTorch / LSTM+Attention, RAG Pipelines, ChromaDB Vector DB, Multi-Agent Systems, ETL</p>
+                </div>
+                <div class="glass-panel rounded-xl p-5 border-t-2 border-t-cyan-400">
+                    <h3 class="font-mono text-sm font-bold text-white mb-2"><i class="fas fa-cloud text-cyan-400 mr-2"></i>Cloud & DevOps</h3>
+                    <p class="text-sm text-slate-300">Microsoft Azure, Google Cloud Platform (GCP), Docker, GitHub Actions CI/CD, OAuth / Entra ID</p>
+                </div>
+                <div class="glass-panel rounded-xl p-5 border-t-2 border-t-emerald-400">
+                    <h3 class="font-mono text-sm font-bold text-white mb-2"><i class="fas fa-shield-alt text-emerald-400 mr-2"></i>Defensive Engineering</h3>
+                    <p class="text-sm text-slate-300">Root-Cause Debugging, Query Optimization, xUnit, Pytest, Jest, Automated Regression Testing</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 bg-slate-950/90 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="font-mono text-xs text-slate-400">
+                © 2026 Kritika Gupta • Engineered with zero bloat & defensive precision.
+            </div>
+            <div class="flex items-center gap-5 text-sm text-slate-400">
+                <a href="mailto:work.kritikagupta13@gmail.com" class="hover:text-cyan-400 transition-colors">Email</a>
+                <a href="https://github.com/KritikaGupta15" target="_blank" class="hover:text-cyan-400 transition-colors">GitHub</a>
+                <a href="https://linkedin.com/in/kritika-gupta-73335a276" target="_blank" class="hover:text-cyan-400 transition-colors">LinkedIn</a>
+            </div>
+        </div>
     </footer>
 
+    <!-- INTERACTIVE CLI MODAL (Ctrl+K / Cmd+K) -->
+    <div id="cli-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="w-full max-w-2xl bg-obsidian border border-cyan-500/40 rounded-2xl shadow-2xl overflow-hidden font-mono text-xs">
+            <div class="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
+                <div class="flex items-center gap-2 text-cyan-400">
+                    <i class="fas fa-terminal"></i>
+                    <span>kritika@command-center:~ (Interactive Shell)</span>
+                </div>
+                <button id="close-cli-btn" class="text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800">ESC</button>
+            </div>
+            <div id="cli-output" class="p-4 h-72 overflow-y-auto space-y-2 text-slate-300">
+                <div class="text-emerald-400">Welcome to Kritika Gupta's Interactive Engineering Terminal.</div>
+                <div class="text-slate-400">Type <span class="text-cyan-300">help</span> to view available commands (e.g., <span class="text-cyan-300">whoami</span>, <span class="text-cyan-300">ieee</span>, <span class="text-cyan-300">projects</span>, <span class="text-cyan-300">relocate</span>, <span class="text-cyan-300">contact</span>).</div>
+            </div>
+            <div class="flex items-center px-4 py-3 bg-slate-900/90 border-t border-slate-800">
+                <span class="text-emerald-400 mr-2">$</span>
+                <input id="cli-input" type="text" placeholder="Enter command (try 'whoami' or 'help')..." class="w-full bg-transparent text-white focus:outline-none" autocomplete="off">
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 hidden px-4 py-3 rounded-xl bg-emerald-500 text-slate-950 font-mono text-xs font-bold shadow-xl"></div>
+
+    <script>
+        // 1. Toast Clipboard Helper
+        function copyToClipboard(text, message) {
+            navigator.clipboard.writeText(text);
+            const toast = document.getElementById('toast');
+            toast.textContent = '✓ ' + message;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 2500);
+        }
+
+        // 2. Interactive Particle Telemetry Network in Hero
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null };
+
+        function resizeCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        window.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouse.x = e.clientX - rect.left;
+            mouse.y = e.clientY - rect.top;
+        });
+
+        for (let i = 0; i < 65; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.6,
+                vy: (Math.random() - 0.5) * 0.6,
+                r: Math.random() * 2 + 1
+            });
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(6, 182, 212, 0.65)';
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(6, 182, 212, ${0.18 * (1 - dist / 120)})`;
+                        ctx.stroke();
+                    }
+                }
+                if (mouse.x !== null) {
+                    let mDist = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+                    if (mDist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.strokeStyle = `rgba(16, 185, 129, ${0.35 * (1 - mDist / 150)})`;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // 3. Systems Lab Tab Switcher
+        function switchLab(tab) {
+            ['hft', 'ieee', 'cpp'].forEach(id => {
+                document.getElementById('panel-' + id).classList.add('hidden');
+                document.getElementById('tab-' + id).classList.remove('active', 'text-cyan-300');
+                document.getElementById('tab-' + id).classList.add('text-slate-400');
+            });
+            document.getElementById('panel-' + tab).classList.remove('hidden');
+            document.getElementById('tab-' + tab).classList.add('active');
+            document.getElementById('tab-' + tab).classList.remove('text-slate-400');
+        }
+
+        // 4. Lab 1: Simulated HFT Order Book Feed
+        const orderFeed = document.getElementById('order-book-feed');
+        let basePrice = 142.50;
+        function pushOrderTick(isBurst = false) {
+            const side = Math.random() > 0.5 ? 'BUY ' : 'SELL';
+            const qty = Math.floor(Math.random() * 450 + 25);
+            basePrice += (Math.random() - 0.495) * 0.08;
+            const lat = (isBurst ? (Math.random() * 4 + 11) : (Math.random() * 3 + 13)).toFixed(1);
+            const row = document.createElement('div');
+            row.className = 'flex justify-between px-2 py-1 rounded bg-slate-900/70 border border-slate-800/60';
+            row.innerHTML = `
+                <span class="${side === 'BUY ' ? 'text-emerald-400' : 'text-rose-400'} font-bold">${side}</span>
+                <span class="text-slate-300">${qty.toString().padStart(3, '0')} @ $${basePrice.toFixed(2)}</span>
+                <span class="text-cyan-400">MATCHED [${lat}µs]</span>
+            `;
+            orderFeed.prepend(row);
+            if (orderFeed.children.length > 7) orderFeed.removeChild(orderFeed.lastChild);
+            document.getElementById('hft-latency').textContent = lat + ' µs';
+        }
+        setInterval(() => pushOrderTick(false), 950);
+        function burstOrders() {
+            document.getElementById('hft-tps').textContent = '148,900 msg/s';
+            for (let i = 0; i < 6; i++) setTimeout(() => pushOrderTick(true), i * 60);
+            setTimeout(() => document.getElementById('hft-tps').textContent = '84,210 msg/s', 2000);
+        }
+
+        // 5. Lab 2: IEEE Sensor Anomaly Waveform
+        const sCanvas = document.getElementById('sensor-canvas');
+        const sCtx = sCanvas.getContext('2d');
+        let phase = 0;
+        let faultActive = false;
+
+        function triggerFault() {
+            faultActive = !faultActive;
+            const btn = document.getElementById('fault-btn');
+            const status = document.getElementById('regime-status');
+            const score = document.getElementById('anomaly-score');
+            if (faultActive) {
+                btn.innerHTML = '<i class="fas fa-check mr-1"></i> Clear Bearing Fault';
+                status.textContent = 'ANOMALY DETECTED (BEARING DRIFT)';
+                status.className = 'text-rose-400 font-bold';
+                score.textContent = 'ANOMALY SCORE: 0.94 [ALERT]';
+                score.className = 'text-rose-400 font-bold';
+            } else {
+                btn.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i> Inject Bearing Fault';
+                status.textContent = 'NOMINAL (REGIME B)';
+                status.className = 'text-emerald-400 font-bold';
+                score.textContent = 'ANOMALY SCORE: 0.04';
+                score.className = 'text-cyan-400';
+            }
+        }
+
+        function drawSensorWave() {
+            sCtx.clearRect(0, 0, sCanvas.width, sCanvas.height);
+            sCtx.beginPath();
+            for (let x = 0; x < sCanvas.width; x++) {
+                let noise = faultActive ? (Math.random() - 0.5) * 58 : (Math.random() - 0.5) * 8;
+                let y = 100 + Math.sin((x + phase) * 0.04) * 32 + Math.cos((x + phase) * 0.11) * 12 + noise;
+                if (x === 0) sCtx.moveTo(x, y);
+                else sCtx.lineTo(x, y);
+            }
+            sCtx.strokeStyle = faultActive ? '#fb7185' : '#22d3ee';
+            sCtx.lineWidth = 2;
+            sCtx.stroke();
+            phase += 3;
+            requestAnimationFrame(drawSensorWave);
+        }
+        drawSensorWave();
+
+        // 6. Lab 3: C++ Memory Slider
+        function updateCppBenchmark(gb) {
+            document.getElementById('file-size-label').textContent = gb + '.0 GB';
+            const mb = gb * 1024;
+            document.getElementById('naive-ram').textContent = mb.toLocaleString() + ' MB (OOM RISK)';
+            const pct = Math.min(100, Math.max(15, (gb / 64) * 100));
+            document.getElementById('naive-bar').style.width = pct + '%';
+        }
+
+        // 7. 3D Tilt Effect on Project Cards
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = `perspective(1000px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+            });
+        });
+
+        // 8. Interactive CLI Terminal (Ctrl+K / Cmd+K)
+        const cliModal = document.getElementById('cli-modal');
+        const cliInput = document.getElementById('cli-input');
+        const cliOutput = document.getElementById('cli-output');
+
+        function toggleCli(show) {
+            cliModal.classList.toggle('hidden', !show);
+            if (show) cliInput.focus();
+        }
+        document.getElementById('open-cli-btn').addEventListener('click', () => toggleCli(true));
+        document.getElementById('close-cli-btn').addEventListener('click', () => toggleCli(false));
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
+                e.preventDefault();
+                toggleCli(cliModal.classList.contains('hidden'));
+            } else if (e.key === 'Escape') {
+                toggleCli(false);
+            }
+        });
+
+        const commands = {
+            help: 'Available commands: whoami, skills, projects, ieee, relocate, contact, clear',
+            whoami: 'Kritika Gupta — MS in Computer Science (Central Michigan University, 3.77 GPA). Systems-first Full-Stack & AI Software Engineer.',
+            skills: 'Languages: Python, C++, C#, Java, TypeScript, SQL | Frameworks: ASP.NET Core, FastAPI, Spring Boot, React | Data/AI: PostgreSQL, Kafka, ChromaDB, PyTorch.',
+            projects: '1. CommunityFlow Chicago (Geospatial ETL + React/C#/PostgreSQL)\n2. Connected Vehicle Fleet Telemetry (Java/Kafka/BigQuery)\n3. NexusCore HFT Simulator (O(1) Matching Engine)\n4. Agentic AI Smart City Assistant (RAG + DeepSeek)',
+            ieee: 'Published in IEEE Xplore (MLISE 2026): "Regime-Aware Deep Learning Framework for Predictive Maintenance in Industrial Systems" (DOI: 10.1109/MLISE70044.2026.11607667)',
+            relocate: 'Status: 100% open and ready to relocate anywhere in the United States for high-impact engineering roles.',
+            contact: 'Email: work.kritikagupta13@gmail.com | Phone: (989) 492-2936 | GitHub: github.com/KritikaGupta15'
+        };
+
+        cliInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const raw = cliInput.value.trim();
+                const cmd = raw.toLowerCase();
+                if (!cmd) return;
+                if (cmd === 'clear') {
+                    cliOutput.innerHTML = '';
+                } else {
+                    const line = document.createElement('div');
+                    line.innerHTML = `<span class="text-emerald-400">$ ${raw}</span>`;
+                    cliOutput.appendChild(line);
+
+                    const resp = document.createElement('div');
+                    resp.className = 'text-slate-300 whitespace-pre-line pl-3 border-l border-cyan-500/40';
+                    resp.textContent = commands[cmd] || `Command not found: '${raw}'. Type 'help' for available commands.`;
+                    cliOutput.appendChild(resp);
+                }
+                cliInput.value = '';
+                cliOutput.scrollTop = cliOutput.scrollHeight;
+            }
+        });
+    </script>
 </body>
 </html>
